@@ -28,16 +28,29 @@ const Portfolio = () => {
             
             <Card className="overflow-hidden hover-glow slide-up">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative">
-                  <img 
-                    src={clandestinoProject} 
-                    alt="Clandestino 13 Restaurant" 
-                    className="w-full h-full object-cover min-h-[400px]"
-                  />
-                  <div className="absolute top-4 left-4">
+                <div className="relative bg-gray-100">
+                  <div className="absolute top-4 left-4 z-10">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                      Live Project
+                      Live Preview
                     </span>
+                  </div>
+                  <iframe 
+                    src="https://clandestino13.it" 
+                    title="Clandestino 13 Live Preview"
+                    className="w-full h-[400px] border-0"
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                  />
+                  <div className="absolute bottom-4 right-4 z-10">
+                    <a 
+                      href="https://clandestino13.it" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="bg-black/80 text-white px-3 py-1 rounded-full text-xs hover:bg-black/90 transition-colors flex items-center"
+                    >
+                      Open Full Site
+                      <ExternalLink className="ml-1 h-3 w-3" />
+                    </a>
                   </div>
                 </div>
                 
