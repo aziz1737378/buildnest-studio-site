@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       contact_messages: {
         Row: {
+          admin_notes: string | null
           business: string | null
           created_at: string | null
           email: string
@@ -25,6 +26,7 @@ export type Database = {
           status: string | null
         }
         Insert: {
+          admin_notes?: string | null
           business?: string | null
           created_at?: string | null
           email: string
@@ -34,6 +36,7 @@ export type Database = {
           status?: string | null
         }
         Update: {
+          admin_notes?: string | null
           business?: string | null
           created_at?: string | null
           email?: string

@@ -28,6 +28,7 @@ interface ContactMessage {
   message: string;
   status: string;
   created_at: string;
+  admin_notes: string | null;
 }
 
 const Admin = () => {
