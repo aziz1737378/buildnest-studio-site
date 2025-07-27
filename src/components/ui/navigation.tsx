@@ -23,9 +23,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">B</span>
-            </div>
+            <img 
+              src="/lovable-uploads/8c742d80-79be-4034-a8e1-083fb8cfa74a.png" 
+              alt="Buildnest Logo" 
+              className="w-8 h-8 object-contain"
+            />
             <span className="text-xl font-bold">Buildnest</span>
           </Link>
 
