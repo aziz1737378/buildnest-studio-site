@@ -15,7 +15,8 @@ const Pricing = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const endDate = new Date(now + (7 * 24 * 60 * 60 * 1000)).getTime();
+      // Set a fixed end date (7 days from when the component first loads)
+      const endDate = new Date('2025-02-03T23:59:59').getTime(); // Fixed end date
       const distance = endDate - now;
 
       if (distance > 0) {
