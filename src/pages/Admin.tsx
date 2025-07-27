@@ -295,7 +295,10 @@ const Admin = () => {
                         ? 'border-primary bg-primary/5'
                         : 'hover:bg-muted/50'
                     }`}
-                    onClick={() => setSelectedMessage(message)}
+                    onClick={() => {
+                      setSelectedMessage(message);
+                      setAdminNotes(message.admin_notes || "");
+                    }}
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
