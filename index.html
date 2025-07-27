@@ -1,32 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Basic Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buildnest - Smart websites & apps for real businesses</title>
-    <meta name="description" content="Buildnest is a modern digital studio based in Italy creating fast, elegant websites and apps for businesses, startups, and entrepreneurs worldwide." />
+    <meta name="description" content="Buildnest is a premium digital studio in Italy offering fast, elegant websites and apps for real businesses, restaurants, creators, and entrepreneurs." />
+    <meta name="keywords" content="Buildnest, web development, app development, websites for businesses, Italy digital studio, landing pages, restaurant website, Tricase, Clandestino13, custom apps" />
     <meta name="author" content="Buildnest" />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="/lovable-uploads/8c742d80-79be-4034-a8e1-083fb8cfa74a.png" type="image/png">
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://buildnest.it/" />
+    <meta name="theme-color" content="#ffffff" />
 
+    <!-- Open Graph -->
     <meta property="og:title" content="Buildnest - Smart websites & apps for real businesses" />
     <meta property="og:description" content="Modern digital studio creating premium websites and digital tools for businesses worldwide." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://buildnest.it/" />
     <meta property="og:image" content="https://i.imghippo.com/files/spM8945aM.png" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:site" content="@buildnest_development" />
+    <meta name="twitter:title" content="Buildnest" />
+    <meta name="twitter:description" content="Smart websites & apps for real businesses." />
     <meta name="twitter:image" content="https://i.imghippo.com/files/spM8945aM.png" />
+
+    <!-- Manifest & Favicon -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/lovable-uploads/8c742d80-79be-4034-a8e1-083fb8cfa74a.png" type="image/png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Optional Preload -->
+    <link rel="preload" as="image" href="/images/hero.jpg" />
+
+    <!-- Accessibility / Mobile -->
+    <meta name="msapplication-tap-highlight" content="no" />
   </head>
 
-  <body>
-    <div id="root"></div>
+  <body style="margin: 0; font-family: 'Inter', 'Manrope', sans-serif;">
+    <main id="root" role="main">
+      <!-- Loading fallback if JS takes time -->
+      <div id="loading" style="padding: 2rem; text-align: center; font-size: 1.1rem; color: #555;">
+        Loading Buildnest...
+      </div>
+
+      <noscript>
+        <div style="padding: 2rem; text-align: center; font-size: 1.2rem;">
+          Buildnest requires JavaScript to run. Please enable it in your browser.
+        </div>
+      </noscript>
+    </main>
+
+    <!-- Main App Script -->
+    <script type="module">
+      // Remove fallback when app loads
+      window.addEventListener('DOMContentLoaded', () => {
+        const loading = document.getElementById('loading');
+        if (loading) loading.remove();
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
