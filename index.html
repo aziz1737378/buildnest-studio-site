@@ -58,3 +58,36 @@
   <!-- Accessibility / Mobile -->
   <meta name="msapplication-tap-highlight" content="no" />
 </head>
+<body style="margin: 0; font-family: 'Inter', 'Manrope', sans-serif; background-color: #fff;">
+  <main id="root" role="main">
+    <!-- SEO-Friendly Static Fallback -->
+    <section style="padding: 3rem 1rem; text-align: center;">
+      <h1 style="font-size: 2rem; margin-bottom: 1rem;">Buildnest - Premium Websites & Apps in Italy</h1>
+      <p style="font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto;">
+        Buildnest is a digital studio based in Italy crafting high-quality websites and custom apps for businesses, restaurants, creators, and entrepreneurs. We deliver fast, elegant solutions tailored to your needs.
+      </p>
+    </section>
+
+    <!-- JavaScript Fallback -->
+    <div id="loading" style="text-align: center; padding: 2rem; font-size: 1rem; color: #777;">
+      Loading Buildnest...
+    </div>
+
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-size: 1.1rem;">
+        Buildnest requires JavaScript to run. Please enable it in your browser.
+      </div>
+    </noscript>
+  </main>
+
+  <!-- App Bootstrap -->
+  <script type="module">
+    window.addEventListener('DOMContentLoaded', () => {
+      const loading = document.getElementById('loading');
+      if (loading) loading.remove();
+      const staticFallback = document.querySelector('section');
+      if (staticFallback) staticFallback.remove();
+    });
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
