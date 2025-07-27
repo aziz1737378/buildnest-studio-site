@@ -1,0 +1,16 @@
+{
+  "name": "Buildnest",
+  "short_name": "Buildnest",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "description": "Smart websites & apps for real businesses.",
+  "icons": [
+    {
+      "src": "/lovable-uploads/8c742d80-79be-4034-a8e1-083fb8cfa74a.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
