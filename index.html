@@ -38,17 +38,17 @@
 
     <!-- Accessibility / Mobile -->
     <meta name="msapplication-tap-highlight" content="no" />
-  </head>
-    
+
     <!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D1FJKDK9RS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-D1FJKDK9RS');
-</script>
-    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D1FJKDK9RS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-D1FJKDK9RS');
+    </script>
+  </head>
+
   <body style="margin: 0; font-family: 'Inter', 'Manrope', sans-serif; background-color: #fff;">
     <main id="root" role="main">
       <!-- SEO-Friendly Static Fallback -->
@@ -59,7 +59,7 @@
         </p>
       </section>
 
-      <!-- JavaScript Fallback while app loads -->
+      <!-- JavaScript Fallback -->
       <div id="loading" style="text-align: center; padding: 2rem; font-size: 1rem; color: #777;">
         Loading Buildnest...
       </div>
@@ -71,9 +71,9 @@
       </noscript>
     </main>
 
-    <!-- Main App Script -->
+    <!-- App Bootstrap -->
     <script type="module">
-      // Remove static content once React/Vite app loads
+      // Remove fallback content after React app mounts
       window.addEventListener('DOMContentLoaded', () => {
         const loading = document.getElementById('loading');
         if (loading) loading.remove();
