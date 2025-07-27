@@ -2,41 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Buildnest Design System - Premium Agency Theme */
 
 @layer base {
   :root {
+    /* Base colors - Clean white background with deep blacks */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Deep black for premium feel */
+    --primary: 0 0% 8%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft beige/gold accent */
+    --secondary: 41 24% 94%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted grays for subtle elements */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Premium gold/beige */
+    --accent: 38 60% 85%;
+    --accent-foreground: 0 0% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Tech blue accent for interactive elements */
+    --tech-blue: 217 33% 55%;
+    --tech-blue-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --radius: 0.5rem;
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 0 0% 8%;
+
+    --radius: 0.75rem;
+
+    /* Premium gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 15%));
+    --gradient-accent: linear-gradient(135deg, hsl(38 60% 90%), hsl(41 24% 94%));
+    --gradient-tech: linear-gradient(135deg, hsl(217 33% 55%), hsl(217 33% 45%));
+    
+    /* Shadows for depth */
+    --shadow-soft: 0 4px 16px -4px hsl(0 0% 8% / 0.08);
+    --shadow-medium: 0 8px 32px -8px hsl(0 0% 8% / 0.12);
+    --shadow-strong: 0 16px 64px -16px hsl(0 0% 8% / 0.16);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +121,50 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+}
+
+@layer components {
+  /* Premium button variants */
+  .btn-premium {
+    @apply px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+  
+  .btn-accent {
+    @apply px-8 py-4 bg-accent text-accent-foreground rounded-xl font-medium transition-all duration-300 hover:shadow-md hover:scale-105;
+  }
+  
+  .btn-tech {
+    @apply px-8 py-4 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105;
+    background: var(--gradient-tech);
+  }
+
+  /* Animation utilities */
+  .fade-in {
+    @apply animate-[fadeIn_0.6s_ease-out_forwards];
+  }
+  
+  .slide-up {
+    @apply animate-[slideUp_0.8s_ease-out_forwards];
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.1)];
+  }
+
+  /* Text effects */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .container-padding {
+    @apply px-6 lg:px-8 xl:px-12;
+  }
+  
+  .section-spacing {
+    @apply py-20 lg:py-32;
   }
 }
