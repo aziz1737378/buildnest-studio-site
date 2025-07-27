@@ -12,7 +12,6 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -39,46 +38,38 @@ const Auth = () => {
     return () => subscription.unsubscribe();
   }, [navigate]);
 
-  const handleAuth = async (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Only allow the specific admin email
+    if (email !== 'azizazeem642@gmail.com') {
+      toast({
+        title: "Access Denied",
+        description: "This admin panel is restricted to authorized users only.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: window.location.origin
-          }
-        });
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-        if (error) {
-          throw error;
-        }
-
-        toast({
-          title: "Account created successfully!",
-          description: "You've been signed in and can now access the admin panel.",
-        });
-      } else {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
-        if (error) {
-          throw error;
-        }
-
-        toast({
-          title: "Welcome back!",
-          description: "You've been signed in successfully.",
-        });
+      if (error) {
+        throw error;
       }
+
+      toast({
+        title: "Welcome back!",
+        description: "You've been signed in successfully.",
+      });
     } catch (error: any) {
       toast({
-        title: `Error ${isSignUp ? 'creating account' : 'signing in'}`,
+        title: "Error signing in",
         description: error.message,
         variant: "destructive",
       });
@@ -95,18 +86,13 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-background">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">
-            {isSignUp ? 'Create Admin Account' : 'Admin Login'}
-          </CardTitle>
+          <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
           <CardDescription>
-            {isSignUp 
-              ? 'Create your Buildnest admin account' 
-              : 'Sign in to access the Buildnest admin panel'
-            }
+            Sign in to access the Buildnest admin panel
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleAuth} className="space-y-4">
+          <form onSubmit={handleSignIn} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -115,7 +101,7 @@ const Auth = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="admin@buildnest.it"
+                placeholder="Enter authorized email"
               />
             </div>
             <div className="space-y-2">
@@ -135,26 +121,9 @@ const Auth = () => {
               disabled={isLoading}
               variant="premium"
             >
-              {isLoading 
-                ? (isSignUp ? "Creating Account..." : "Signing in...") 
-                : (isSignUp ? "Create Account" : "Sign In")
-              }
+              {isLoading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
-          
-          <div className="mt-4 text-center">
-            <Button
-              type="button"
-              variant="ghost"
-              onClick={() => setIsSignUp(!isSignUp)}
-              className="text-sm"
-            >
-              {isSignUp 
-                ? "Already have an account? Sign in" 
-                : "Need to create an admin account? Sign up"
-              }
-            </Button>
-          </div>
         </CardContent>
       </Card>
     </div>
