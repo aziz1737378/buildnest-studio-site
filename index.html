@@ -31,10 +31,18 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "LocalBusiness",
     "name": "Buildnest",
     "url": "https://buildnest.it",
-    "logo": "https://buildnest.it/favicon.png"
+    "image": "https://buildnest.it/favicon.png",
+    "description": "Buildnest is a premium digital studio building modern websites and apps for real businesses.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tricase",
+      "addressCountry": "IT"
+    },
+    "founder": "Abdul Aziz Azeem",
+    "email": "info@buildnest.it"
   }
   </script>
 
@@ -47,31 +55,28 @@
     gtag('config', 'G-D1FJKDK9RS');
   </script>
 
-  <!-- Favicons - Comprehensive setup for all browsers and devices -->
-  <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="/favicon.png" type="image/png" sizes="16x16">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="152x152">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="144x144">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="120x120">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="114x114">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="76x76">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="72x72">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="60x60">
-  <link rel="apple-touch-icon" href="/favicon.png" sizes="57x57">
-  <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="msapplication-TileImage" content="/favicon.png">
-  <meta name="msapplication-TileColor" content="#ffffff">
+  <!-- Favicon Setup -->
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="msapplication-TileImage" content="/favicon.png" />
+  <meta name="msapplication-TileColor" content="#ffffff" />
   <link rel="manifest" href="/manifest.json" />
+
+  <!-- PWA & Mobile -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Buildnest" />
+  <meta name="msapplication-tap-highlight" content="no" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Accessibility / Mobile -->
-  <meta name="msapplication-tap-highlight" content="no" />
+  <!-- Preload App Script (adjust if hashed on build) -->
+  <link rel="modulepreload" href="/src/main.tsx" />
 </head>
+
 <body style="margin: 0; font-family: 'Inter', 'Manrope', sans-serif; background-color: #fff;">
   <main id="root" role="main">
     
@@ -83,6 +88,13 @@
       <p style="font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto;">
         Buildnest is a digital studio based in Italy crafting high-quality websites and custom apps for businesses, restaurants, creators, and entrepreneurs. We deliver fast, elegant solutions tailored to your needs.
       </p>
+      <div style="margin-top: 2rem;">
+        <a href="/services" style="margin-right: 1rem; color: #007BFF;">Services</a>
+        <a href="/portfolio" style="margin-right: 1rem; color: #007BFF;">Portfolio</a>
+        <a href="/pricing" style="margin-right: 1rem; color: #007BFF;">Pricing</a>
+        <a href="/process" style="margin-right: 1rem; color: #007BFF;">Process</a>
+        <a href="/contact" style="color: #007BFF;">Contact</a>
+      </div>
     </section>
 
     <!-- JavaScript Fallback -->
