@@ -239,7 +239,7 @@ html {
   }
 
   .hover-lift-v2 {
-    @apply transition-all duration-400 hover:scale-[1.02] cursor-pointer;
+    @apply transition-all duration-300 hover:scale-[1.02] cursor-pointer;
     transition-timing-function: var(--transition-elastic);
   }
   
