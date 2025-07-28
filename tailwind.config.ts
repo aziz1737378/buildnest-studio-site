@@ -257,6 +257,80 @@ export default {
 						transform: 'rotate(0deg)',
 						opacity: '1'
 					}
+				},
+				// V2 Enhanced animations
+				'gradient-shift': {
+					'0%, 100%': {
+						backgroundPosition: '0% 50%'
+					},
+					'50%': {
+						backgroundPosition: '100% 50%'
+					}
+				},
+				'float-1': {
+					'0%, 100%': {
+						transform: 'translateY(0px) translateX(0px)'
+					},
+					'25%': {
+						transform: 'translateY(-20px) translateX(10px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px) translateX(-15px)'
+					},
+					'75%': {
+						transform: 'translateY(-30px) translateX(5px)'
+					}
+				},
+				'float-2': {
+					'0%, 100%': {
+						transform: 'translateY(0px) translateX(0px) rotate(0deg)'
+					},
+					'33%': {
+						transform: 'translateY(-25px) translateX(-10px) rotate(5deg)'
+					},
+					'66%': {
+						transform: 'translateY(-5px) translateX(20px) rotate(-3deg)'
+					}
+				},
+				'float-3': {
+					'0%, 100%': {
+						transform: 'translateY(0px) scale(1)'
+					},
+					'50%': {
+						transform: 'translateY(-15px) scale(1.05)'
+					}
+				},
+				'particle-float': {
+					'0%': {
+						transform: 'translateY(100vh) translateX(0px)',
+						opacity: '0'
+					},
+					'10%': {
+						opacity: '1'
+					},
+					'90%': {
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateY(-100vh) translateX(100px)',
+						opacity: '0'
+					}
+				},
+				'glow-pulse': {
+					'0%, 100%': {
+						boxShadow: '0 0 30px hsl(var(--primary) / 0.3)'
+					},
+					'50%': {
+						boxShadow: '0 0 60px hsl(var(--primary) / 0.6)'
+					}
+				},
+				'text-shimmer': {
+					'0%': {
+						backgroundPosition: '-200% center'
+					},
+					'100%': {
+						backgroundPosition: '200% center'
+					}
 				}
 			},
 			animation: {
@@ -277,7 +351,15 @@ export default {
 				'scroll-slide-up': 'scrollSlideUp 0.8s ease-out forwards',
 				'scroll-scale': 'scrollScale 0.8s ease-out forwards',
 				'slide-down': 'slide-down 0.3s ease-out forwards',
-				'rotate-in-180': 'rotate-in-180 0.3s ease-out forwards'
+				'rotate-in-180': 'rotate-in-180 0.3s ease-out forwards',
+				// V2 Animations
+				'gradient-shift': 'gradient-shift 4s ease-in-out infinite',
+				'float-1': 'float-1 6s ease-in-out infinite',
+				'float-2': 'float-2 8s ease-in-out infinite',
+				'float-3': 'float-3 10s ease-in-out infinite',
+				'particle-float': 'particle-float 15s linear infinite',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+				'text-shimmer': 'text-shimmer 2s ease-in-out infinite'
 			}
 		}
 	},
