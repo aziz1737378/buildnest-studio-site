@@ -70,38 +70,54 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         <div 
           className={cn(
-            "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
-            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            "md:hidden absolute top-full left-0 right-0 transition-all duration-500 ease-out transform-gpu",
+            isOpen 
+              ? "opacity-100 translate-y-0 pointer-events-auto" 
+              : "opacity-0 -translate-y-4 pointer-events-none"
           )}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border animate-slide-down">
-            {navItems.map((item, index) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={cn(
-                  "block px-3 py-2 text-base font-medium transition-all duration-300 hover:text-primary hover:translate-x-2 hover:bg-muted/50 rounded-lg",
-                  location.pathname === item.href
-                    ? "text-primary bg-muted/30"
-                    : "text-muted-foreground",
-                  isOpen && "animate-fade-in"
-                )}
-                style={{ animationDelay: `${index * 50}ms` }}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="px-3 py-2">
-              <Button 
-                variant="premium" 
-                size="sm" 
-                className="w-full hover:scale-105 transition-transform duration-300 animate-fade-in" 
-                style={{ animationDelay: `${navItems.length * 50}ms` }}
-                asChild
-              >
-                <Link to="/contact">Start Project</Link>
-              </Button>
+          <div className="bg-background/95 backdrop-blur-xl border-b border-border shadow-lg">
+            <div className="max-w-7xl mx-auto container-padding py-4">
+              {navItems.map((item, index) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "block px-4 py-3 text-base font-medium rounded-xl mb-2 transition-all duration-300 transform-gpu",
+                    "hover:bg-muted/50 hover:scale-[1.02] hover:shadow-sm",
+                    location.pathname === item.href
+                      ? "text-primary bg-primary/10 border border-primary/20"
+                      : "text-muted-foreground hover:text-primary",
+                    isOpen && "animate-[slide-up_0.4s_ease-out_forwards]"
+                  )}
+                  style={{ 
+                    animationDelay: `${index * 80}ms`,
+                    opacity: isOpen ? 1 : 0,
+                    transform: isOpen ? 'translateY(0)' : 'translateY(20px)'
+                  }}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <div className="mt-4">
+                <Button 
+                  variant="premium" 
+                  size="sm" 
+                  className={cn(
+                    "w-full transition-all duration-300 transform-gpu hover:scale-[1.02] hover:shadow-lg",
+                    isOpen && "animate-[slide-up_0.4s_ease-out_forwards]"
+                  )}
+                  style={{ 
+                    animationDelay: `${navItems.length * 80}ms`,
+                    opacity: isOpen ? 1 : 0,
+                    transform: isOpen ? 'translateY(0)' : 'translateY(20px)'
+                  }}
+                  asChild
+                >
+                  <Link to="/contact">Start Project</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
