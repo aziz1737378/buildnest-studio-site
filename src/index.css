@@ -148,9 +148,37 @@
   .slide-up {
     @apply animate-[slideUp_0.8s_ease-out_forwards];
   }
+
+  .slide-in-left {
+    @apply animate-[slideInLeft_0.8s_ease-out_forwards];
+  }
+
+  .slide-in-right {
+    @apply animate-[slideInRight_0.8s_ease-out_forwards];
+  }
+
+  .bounce-in {
+    @apply animate-[bounceIn_0.8s_ease-out_forwards];
+  }
+
+  .scale-in {
+    @apply animate-[scaleIn_0.6s_ease-out_forwards];
+  }
+
+  .rotate-in {
+    @apply animate-[rotateIn_0.8s_ease-out_forwards];
+  }
+
+  .pulse-glow {
+    @apply animate-[pulseGlow_2s_ease-in-out_infinite];
+  }
   
   .hover-glow {
-    @apply transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.1)];
+    @apply transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.1)] hover:scale-[1.02];
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,0,0,0.15)] hover:-translate-y-2;
   }
 
   /* Text effects */

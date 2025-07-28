@@ -88,16 +88,16 @@ const Contact = () => {
         <div className="max-w-6xl mx-auto container-padding">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="hover-glow slide-up">
+            <Card className="hover-lift slide-in-left group" style={{ animationDelay: '0.5s' }}>
               <CardHeader>
-                <CardTitle className="text-2xl">Send us a message</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">Send us a message</CardTitle>
+                <CardDescription className="group-hover:text-foreground transition-colors duration-300">
                   Tell us about your project and we'll get back to you with a detailed proposal.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
+                  <div className="space-y-2 fade-in" style={{ animationDelay: '0.7s' }}>
                     <Label htmlFor="name">Name *</Label>
                     <Input
                       id="name"
@@ -106,10 +106,11 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="Your full name"
+                      className="transition-all duration-300 focus:scale-105"
                     />
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 fade-in" style={{ animationDelay: '0.9s' }}>
                     <Label htmlFor="email">Email *</Label>
                     <Input
                       id="email"
@@ -119,10 +120,11 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="your@email.com"
+                      className="transition-all duration-300 focus:scale-105"
                     />
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 fade-in" style={{ animationDelay: '1.1s' }}>
                     <Label htmlFor="business">Business / Idea</Label>
                     <Input
                       id="business"
@@ -130,10 +132,11 @@ const Contact = () => {
                       value={formData.business}
                       onChange={handleChange}
                       placeholder="Tell us about your business or project idea"
+                      className="transition-all duration-300 focus:scale-105"
                     />
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 fade-in" style={{ animationDelay: '1.3s' }}>
                     <Label htmlFor="message">Message *</Label>
                     <Textarea
                       id="message"
@@ -142,7 +145,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="Describe your project, goals, and any specific requirements..."
-                      className="min-h-[120px]"
+                      className="min-h-[120px] transition-all duration-300 focus:scale-105"
                     />
                   </div>
 
@@ -150,10 +153,11 @@ const Contact = () => {
                     type="submit" 
                     variant="premium" 
                     size="lg" 
-                    className="w-full" 
+                    className="w-full bounce-in hover:scale-105 transition-transform duration-300" 
                     disabled={isSubmitting}
+                    style={{ animationDelay: '1.5s' }}
                   >
-                    <Send className="mr-2 h-5 w-5" />
+                    <Send className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                     {isSubmitting ? "Sending..." : "Send Request"}
                   </Button>
                 </form>
@@ -161,33 +165,33 @@ const Contact = () => {
             </Card>
 
             {/* Contact Information */}
-            <div className="space-y-8 slide-up" style={{ animationDelay: "0.2s" }}>
-              <Card className="hover-glow">
+            <div className="space-y-8 slide-in-right" style={{ animationDelay: "0.7s" }}>
+              <Card className="hover-lift group">
                 <CardHeader>
-                  <CardTitle className="text-xl">Get in Touch</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">Get in Touch</CardTitle>
+                  <CardDescription className="group-hover:text-foreground transition-colors duration-300">
                     Multiple ways to reach us. Choose what works best for you.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Mail className="h-6 w-6 text-primary" />
+                  <div className="flex items-start space-x-4 fade-in hover:translate-x-2 transition-transform duration-300" style={{ animationDelay: '0.9s' }}>
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 hover:scale-110 hover:bg-primary/20 transition-all duration-300">
+                      <Mail className="h-6 w-6 text-primary transition-transform duration-300 hover:scale-110" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Email</h4>
                       <a 
                         href="mailto:azizxdev175@gmail.com" 
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:underline"
                       >
                         azizxdev175@gmail.com
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="h-6 w-6 text-primary" />
+                  <div className="flex items-start space-x-4 fade-in hover:translate-x-2 transition-transform duration-300" style={{ animationDelay: '1.1s' }}>
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 hover:scale-110 hover:bg-primary/20 transition-all duration-300">
+                      <Phone className="h-6 w-6 text-primary transition-transform duration-300 hover:scale-110" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">WhatsApp</h4>
@@ -195,16 +199,16 @@ const Contact = () => {
                         href="https://wa.me/393792649756" 
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:underline"
                       >
                         +39 379 264 9756
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Instagram className="h-6 w-6 text-primary" />
+                  <div className="flex items-start space-x-4 fade-in hover:translate-x-2 transition-transform duration-300" style={{ animationDelay: '1.3s' }}>
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 hover:scale-110 hover:bg-primary/20 transition-all duration-300">
+                      <Instagram className="h-6 w-6 text-primary transition-transform duration-300 hover:scale-110" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Instagram</h4>
@@ -212,16 +216,16 @@ const Contact = () => {
                         href="https://instagram.com/buildnest_development" 
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:underline"
                       >
                         @buildnest_development
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-6 w-6 text-primary" />
+                  <div className="flex items-start space-x-4 fade-in hover:translate-x-2 transition-transform duration-300" style={{ animationDelay: '1.5s' }}>
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 hover:scale-110 hover:bg-primary/20 transition-all duration-300">
+                      <MapPin className="h-6 w-6 text-primary transition-transform duration-300 hover:scale-110" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Location</h4>
@@ -235,20 +239,20 @@ const Contact = () => {
               </Card>
 
               {/* Response Time */}
-              <Card className="bg-gradient-to-r from-primary to-tech-blue text-white">
+              <Card className="bg-gradient-to-r from-primary to-tech-blue text-white hover:scale-105 transition-transform duration-300 pulse-glow" style={{ animationDelay: '1.7s' }}>
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">Quick Response Time</h3>
-                  <p className="opacity-90 mb-4">
+                  <h3 className="text-lg font-semibold mb-2 bounce-in" style={{ animationDelay: '1.9s' }}>Quick Response Time</h3>
+                  <p className="opacity-90 mb-4 fade-in" style={{ animationDelay: '2.1s' }}>
                     We typically respond to all inquiries within 24 hours. 
                     For urgent projects, feel free to reach out via WhatsApp.
                   </p>
                   <div className="flex items-center space-x-4 text-sm">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                    <div className="flex items-center slide-in-left" style={{ animationDelay: '2.3s' }}>
+                      <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                       Available Mon-Fri
                     </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-yellow-400 rounded-full mr-2"></div>
+                    <div className="flex items-center slide-in-right" style={{ animationDelay: '2.5s' }}>
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full mr-2 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                       Quick WhatsApp replies
                     </div>
                   </div>
@@ -259,14 +263,14 @@ const Contact = () => {
 
           {/* Testimonial */}
           <div className="mt-16 text-center">
-            <Card className="max-w-3xl mx-auto hover-glow">
+            <Card className="max-w-3xl mx-auto hover-lift bounce-in group" style={{ animationDelay: '2.7s' }}>
               <CardContent className="p-8">
-                <div className="text-4xl mb-4">🔥</div>
-                <blockquote className="text-lg italic mb-4">
+                <div className="text-4xl mb-4 scale-in group-hover:animate-bounce" style={{ animationDelay: '2.9s' }}>🔥</div>
+                <blockquote className="text-lg italic mb-4 fade-in group-hover:text-primary transition-colors duration-300" style={{ animationDelay: '3.1s' }}>
                   "Buildnest delivered our restaurant website fast and exactly how we wanted it. 
                   The design is 🔥 and it works great on mobile."
                 </blockquote>
-                <footer className="text-muted-foreground">
+                <footer className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 slide-up" style={{ animationDelay: '3.3s' }}>
                   — Owner, Clandestino 13
                 </footer>
               </CardContent>

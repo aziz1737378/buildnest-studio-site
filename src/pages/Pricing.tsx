@@ -116,12 +116,12 @@ const Pricing = () => {
         <div className="max-w-6xl mx-auto container-padding text-center">
           <div className="fade-in">
             <div className="mb-4">
-              <span className="bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-bold animate-bounce">
+              <span className="bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-bold animate-bounce pulse-glow">
                 🚀 FLASH SALE: 80% OFF - SAVE HUNDREDS!
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Clear pricing. Real value.</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 rotate-in">Clear pricing. Real value.</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 slide-up" style={{ animationDelay: '0.3s' }}>
               Transparent pricing with no hidden fees. Choose the plan that fits your business needs, 
               or let's create a custom solution together.
             </p>
@@ -136,10 +136,10 @@ const Pricing = () => {
             {plans.map((plan, index) => (
               <Card 
                 key={index} 
-                className={`relative hover-glow transition-all duration-300 hover:scale-105 slide-up ${
-                  plan.popular ? 'border-primary shadow-strong' : ''
+                className={`relative hover-lift transition-all duration-500 bounce-in group ${
+                  plan.popular ? 'border-primary shadow-strong pulse-glow' : ''
                 }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${0.5 + index * 0.2}s` }}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">

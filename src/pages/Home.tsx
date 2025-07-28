@@ -115,10 +115,10 @@ const Home = () => {
                 description: "Fully responsive designs that work perfectly on all devices and screen sizes."
               }
             ].map((feature, index) => (
-              <div key={index} className="p-6 rounded-xl hover-glow slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+              <div key={index} className="p-6 rounded-xl hover-lift bounce-in group" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300">{feature.icon}</div>
+                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
+                <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{feature.description}</p>
               </div>
             ))}
           </div>
