@@ -19,9 +19,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-primary-foreground text-primary rounded-lg flex items-center justify-center">
-                <span className="font-bold text-sm">B</span>
-              </div>
+              <img 
+                src="/lovable-uploads/9cb14db2-4ac6-4a31-8739-464c9930d303.png" 
+                alt="Buildnest Logo" 
+                className="w-8 h-8 rounded-lg"
+              />
               <span className="text-xl font-bold">Buildnest</span>
             </Link>
             <p className="text-primary-foreground/80 mb-6 max-w-md">
