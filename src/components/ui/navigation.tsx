@@ -22,7 +22,11 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto container-padding">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link 
+            to="/" 
+            className="flex items-center space-x-2"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <img 
               src="/lovable-uploads/8c742d80-79be-4034-a8e1-083fb8cfa74a.png" 
               alt="Buildnest Logo" 
