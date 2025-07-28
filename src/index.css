@@ -220,7 +220,7 @@ html {
   }
 
   .scale-in-bounce {
-    @apply opacity-0 scale-75 transition-all duration-800;
+    @apply opacity-0 scale-75 transition-all duration-700;
     transition-timing-function: var(--transition-bounce);
   }
   
