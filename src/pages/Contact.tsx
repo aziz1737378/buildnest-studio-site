@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
+import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
   const [formData, setFormData] = useState({

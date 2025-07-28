@@ -187,6 +187,56 @@ export default {
 					'50%': {
 						transform: 'translateY(-10px)'
 					}
+				},
+				'scrollFadeIn': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(30px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'scrollSlideLeft': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateX(-50px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'scrollSlideRight': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateX(50px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'scrollSlideUp': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(50px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'scrollScale': {
+					'0%': {
+						opacity: '0',
+						transform: 'scale(0.8)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'scale(1)'
+					}
 				}
 			},
 			animation: {
@@ -200,7 +250,12 @@ export default {
 				'scaleIn': 'scaleIn 0.6s ease-out',
 				'rotateIn': 'rotateIn 0.8s ease-out',
 				'pulseGlow': 'pulseGlow 2s ease-in-out infinite',
-				'float': 'float 3s ease-in-out infinite'
+				'float': 'float 3s ease-in-out infinite',
+				'scroll-fade-in': 'scrollFadeIn 0.8s ease-out forwards',
+				'scroll-slide-left': 'scrollSlideLeft 0.8s ease-out forwards',
+				'scroll-slide-right': 'scrollSlideRight 0.8s ease-out forwards', 
+				'scroll-slide-up': 'scrollSlideUp 0.8s ease-out forwards',
+				'scroll-scale': 'scrollScale 0.8s ease-out forwards'
 			}
 		}
 	},

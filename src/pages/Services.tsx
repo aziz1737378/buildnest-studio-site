@@ -3,6 +3,7 @@ import { Monitor, Smartphone, Target, ShoppingCart, Wrench, ArrowRight } from "l
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet-async";
+import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
 const Services = () => {
   const services = [
@@ -52,68 +53,78 @@ const Services = () => {
       </Helmet>
       <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="section-spacing">
-        <div className="max-w-6xl mx-auto container-padding text-center">
-          <div className="fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 scale-in">What We Build</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 slide-up" style={{ animationDelay: '0.2s' }}>
-              From simple websites to complex applications, we create digital solutions 
-              that help your business grow and succeed in the modern world.
-            </p>
+      <ScrollAnimatedDiv animation="scroll-fade-in">
+        <section className="section-spacing">
+          <div className="max-w-6xl mx-auto container-padding text-center">
+            <ScrollAnimatedDiv animation="scroll-slide-up">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">What We Build</h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
+                From simple websites to complex applications, we create digital solutions 
+                that help your business grow and succeed in the modern world.
+              </p>
+            </ScrollAnimatedDiv>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollAnimatedDiv>
 
       {/* Services Grid */}
-      <section className="pb-20">
-        <div className="max-w-6xl mx-auto container-padding">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="group hover-lift transition-all duration-500 bounce-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader>
-                  <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                    <service.icon className="h-6 w-6 text-white transition-transform duration-300 group-hover:scale-110" />
-                  </div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">{service.title}</CardTitle>
-                  <CardDescription className="text-base transition-colors duration-300 group-hover:text-foreground">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-muted-foreground transition-all duration-300 hover:text-foreground hover:translate-x-1">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 transition-all duration-300 group-hover:scale-125 group-hover:bg-accent"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      <ScrollAnimatedDiv animation="scroll-fade-in">
+        <section className="pb-20">
+          <div className="max-w-6xl mx-auto container-padding">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <ScrollAnimatedDiv 
+                  key={index} 
+                  animation="scroll-scale"
+                  className="transition-all duration-500"
+                >
+                  <Card className="group hover-lift h-full">
+                    <CardHeader>
+                      <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                        <service.icon className="h-6 w-6 text-white transition-transform duration-300 group-hover:scale-110" />
+                      </div>
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">{service.title}</CardTitle>
+                      <CardDescription className="text-base transition-colors duration-300 group-hover:text-foreground">
+                        {service.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-center text-sm text-muted-foreground transition-all duration-300 hover:text-foreground hover:translate-x-1">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 transition-all duration-300 group-hover:scale-125 group-hover:bg-accent"></div>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </ScrollAnimatedDiv>
+              ))}
+            </div>
 
           {/* CTA Section */}
-          <div className="text-center mt-16 p-8 bg-muted/30 rounded-2xl slide-up hover-glow transition-all duration-500" style={{ animationDelay: '0.8s' }}>
-            <h3 className="text-2xl font-bold mb-4 bounce-in" style={{ animationDelay: '1s' }}>Ready to Start Your Project?</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto fade-in" style={{ animationDelay: '1.2s' }}>
+          <ScrollAnimatedDiv animation="scroll-slide-up" className="text-center mt-16 p-8 bg-muted/30 rounded-2xl hover-glow transition-all duration-500">
+            <h3 className="text-2xl font-bold mb-4">Ready to Start Your Project?</h3>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Let's discuss your idea and create something amazing together. 
               Get a free consultation and project estimate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="premium" size="lg" asChild className="slide-in-left hover:scale-105 transition-transform duration-300" style={{ animationDelay: '1.4s' }}>
+              <Button variant="premium" size="lg" asChild className="hover:scale-105 transition-transform duration-300 group">
                 <Link to="/contact" className="flex items-center">
                   Start Your Project
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild className="slide-in-right hover:scale-105 transition-transform duration-300" style={{ animationDelay: '1.6s' }}>
+              <Button variant="outline" size="lg" asChild className="hover:scale-105 transition-transform duration-300">
                 <Link to="/pricing">View Pricing</Link>
               </Button>
             </div>
-          </div>
+          </ScrollAnimatedDiv>
         </div>
       </section>
+    </ScrollAnimatedDiv>
       </div>
     </>
   );

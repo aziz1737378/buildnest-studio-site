@@ -3,6 +3,7 @@ import { MessageCircle, Palette, Rocket, ArrowRight, Check } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet-async";
+import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
 const Process = () => {
   const steps = [

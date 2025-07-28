@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Code, Smartphone, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
 import heroBackground from "@/assets/hero-bg.jpg";
+import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
 const Home = () => {
   return (
@@ -59,80 +60,109 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="section-spacing bg-muted/30">
-        <div className="max-w-6xl mx-auto container-padding">
-          <div className="text-center mb-16 slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">What is Buildnest?</h2>
-            <div className="max-w-4xl mx-auto space-y-6 text-lg text-muted-foreground">
-              <p>
-                Buildnest is a modern digital studio based in Italy. We create fast, elegant, 
-                and effective websites and apps for local businesses, creators, and entrepreneurs.
-              </p>
-              <p>
-                We're fast. We're flexible. And we focus on the result — not the tech.
-              </p>
-              <p className="text-xl font-medium text-foreground">
-                Every project is fully customized, and built with care.
-              </p>
+      <ScrollAnimatedDiv animation="scroll-fade-in">
+        <section className="section-spacing bg-muted/30">
+          <div className="max-w-6xl mx-auto container-padding">
+            <ScrollAnimatedDiv animation="scroll-slide-up" className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">What is Buildnest?</h2>
+              <div className="max-w-4xl mx-auto space-y-6 text-lg text-muted-foreground">
+                <p>
+                  Buildnest is a modern digital studio based in Italy. We create fast, elegant, 
+                  and effective websites and apps for local businesses, creators, and entrepreneurs.
+                </p>
+                <p>
+                  We're fast. We're flexible. And we focus on the result — not the tech.
+                </p>
+                <p className="text-xl font-medium text-foreground">
+                  Every project is fully customized, and built with care.
+                </p>
+                <p className="text-muted-foreground">
+                  Based in Italy, serving clients worldwide with cutting-edge digital solutions.
+                </p>
+              </div>
+            </ScrollAnimatedDiv>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <ScrollAnimatedDiv animation="scroll-slide-left">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-primary mb-2">50+</div>
+                  <div className="text-muted-foreground">Projects Delivered</div>
+                </div>
+              </ScrollAnimatedDiv>
+              
+              <ScrollAnimatedDiv animation="scroll-fade-in">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-primary mb-2">2-3</div>
+                  <div className="text-muted-foreground">Week Delivery</div>
+                </div>
+              </ScrollAnimatedDiv>
+              
+              <ScrollAnimatedDiv animation="scroll-slide-right">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                  <div className="text-muted-foreground">Client Satisfaction</div>
+                </div>
+              </ScrollAnimatedDiv>
             </div>
           </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            {[
-              { number: "50+", label: "Projects Delivered" },
-              { number: "2-3", label: "Week Delivery" },
-              { number: "100%", label: "Client Satisfaction" }
-            ].map((stat, index) => (
-              <div key={index} className="text-center slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      </ScrollAnimatedDiv>
 
       {/* Features Preview */}
-      <section className="section-spacing">
-        <div className="max-w-6xl mx-auto container-padding text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 slide-up">Why Choose Buildnest?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "⚡",
-                title: "Lightning Fast",
-                description: "Websites that load in under 3 seconds and provide seamless user experience."
-              },
-              {
-                icon: "🎨",
-                title: "Premium Design",
-                description: "Beautiful, modern designs that make your business stand out from the competition."
-              },
-              {
-                icon: "📱",
-                title: "Mobile First",
-                description: "Fully responsive designs that work perfectly on all devices and screen sizes."
-              }
-            ].map((feature, index) => (
-              <div key={index} className="p-6 rounded-xl hover-lift bounce-in group" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
-                <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{feature.description}</p>
-              </div>
-            ))}
-          </div>
+      <ScrollAnimatedDiv animation="scroll-fade-in">
+        <section className="section-spacing">
+          <div className="max-w-6xl mx-auto container-padding">
+            <ScrollAnimatedDiv animation="scroll-slide-up" className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Buildnest?</h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Why choose our development approach for your next project.
+              </p>
+            </ScrollAnimatedDiv>
 
-          <div className="mt-12">
-            <Button variant="premium" size="lg" asChild>
-              <Link to="/services" className="flex items-center">
-                Explore Our Services
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <ScrollAnimatedDiv animation="scroll-scale">
+                <div className="p-6 rounded-xl hover:shadow-xl transition-all duration-300 group bg-card border hover:border-primary/20">
+                  <div className="mb-4">
+                    <Zap className="h-12 w-12 text-primary group-hover:scale-110 transition-transform" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">Lightning Fast</h3>
+                  <p className="text-muted-foreground">Websites that load in under 3 seconds and provide seamless user experience.</p>
+                </div>
+              </ScrollAnimatedDiv>
+              
+              <ScrollAnimatedDiv animation="scroll-scale">
+                <div className="p-6 rounded-xl hover:shadow-xl transition-all duration-300 group bg-card border hover:border-primary/20">
+                  <div className="mb-4">
+                    <Code className="h-12 w-12 text-primary group-hover:scale-110 transition-transform" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">Premium Design</h3>
+                  <p className="text-muted-foreground">Beautiful, modern designs that make your business stand out from the competition.</p>
+                </div>
+              </ScrollAnimatedDiv>
+              
+              <ScrollAnimatedDiv animation="scroll-scale">
+                <div className="p-6 rounded-xl hover:shadow-xl transition-all duration-300 group bg-card border hover:border-primary/20">
+                  <div className="mb-4">
+                    <Smartphone className="h-12 w-12 text-primary group-hover:scale-110 transition-transform" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">Mobile First</h3>
+                  <p className="text-muted-foreground">Fully responsive designs that work perfectly on all devices and screen sizes.</p>
+                </div>
+              </ScrollAnimatedDiv>
+            </div>
+
+            <ScrollAnimatedDiv animation="scroll-fade-in" className="text-center mt-12">
+              <Button variant="premium" size="lg" asChild className="group">
+                <Link to="/services" className="flex items-center">
+                  Explore Our Services
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+            </ScrollAnimatedDiv>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollAnimatedDiv>
       </div>
     </>
   );

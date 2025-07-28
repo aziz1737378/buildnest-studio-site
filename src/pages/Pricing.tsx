@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet-async";
 import { useState, useEffect } from "react";
+import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
 const Pricing = () => {
   const [timeLeft, setTimeLeft] = useState({
