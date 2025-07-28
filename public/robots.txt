@@ -13,6 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-User-agent: *
-Allow: /
 Sitemap: https://buildnest.it/sitemap.xml
