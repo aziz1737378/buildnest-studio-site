@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,16 +6,7 @@ import clandestinoProject from "@/assets/clandestino-project.jpg";
 
 const Portfolio = () => {
   return (
-    <>
-      <Helmet>
-        <title>Portfolio | Buildnest</title>
-        <meta name="description" content="Take a look at some of the amazing projects we've created for businesses across Italy and beyond. Each project is unique and tailored to our client's needs." />
-        <meta property="og:title" content="Portfolio | Buildnest" />
-        <meta property="og:description" content="Showcase of premium websites and apps created by Buildnest for businesses worldwide." />
-        <link rel="canonical" href="https://buildnest.it/portfolio" />
-      </Helmet>
-
-      <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
@@ -151,7 +141,6 @@ const Portfolio = () => {
         </div>
       </section>
     </div>
-    </>
   );
 };
 

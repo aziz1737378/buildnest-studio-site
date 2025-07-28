@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { MessageCircle, Palette, Rocket, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -45,16 +44,7 @@ const Process = () => {
   ];
 
   return (
-    <>
-      <Helmet>
-        <title>Our Process | Buildnest</title>
-        <meta name="description" content="We've streamlined our process to be as simple and transparent as possible. From idea to launch, we'll guide you every step of the way." />
-        <meta property="og:title" content="Our Process | Buildnest" />
-        <meta property="og:description" content="Simple and transparent development process from idea to launch." />
-        <link rel="canonical" href="https://buildnest.it/process" />
-      </Helmet>
-
-      <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
@@ -152,7 +142,6 @@ const Process = () => {
         </div>
       </section>
     </div>
-    </>
   );
 };
 

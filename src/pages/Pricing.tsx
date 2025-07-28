@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Check, ArrowRight, Zap, AlertCircle, Clock, Star } from "lucide-react";
+import { Check, ArrowRight, Star, Clock, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { useState, useEffect } from "react";
 
 const Pricing = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -90,16 +88,7 @@ const Pricing = () => {
   ];
 
   return (
-    <>
-      <Helmet>
-        <title>Pricing | Buildnest 80% Off Offer</title>
-        <meta name="description" content="Limited time 80% OFF on all web development packages. Premium websites starting from €199. Fast delivery, modern design, mobile-responsive." />
-        <meta property="og:title" content="Pricing | Buildnest 80% Off Offer" />
-        <meta property="og:description" content="Special 80% discount on premium web development services. Don't miss out!" />
-        <link rel="canonical" href="https://buildnest.it/pricing" />
-      </Helmet>
-
-      <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20">
       {/* Limited Time Offer Banner */}
       <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white py-4 animate-pulse">
         <div className="max-w-6xl mx-auto container-padding text-center">
@@ -306,7 +295,6 @@ const Pricing = () => {
         </div>
       </section>
     </div>
-    </>
   );
 };
 

@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Monitor, Smartphone, Target, ShoppingCart, Wrench, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -44,16 +43,7 @@ const Services = () => {
   ];
 
   return (
-    <>
-      <Helmet>
-        <title>Our Services | Buildnest</title>
-        <meta name="description" content="From simple websites to complex applications, we create digital solutions that help your business grow and succeed in the modern world." />
-        <meta property="og:title" content="Our Services | Buildnest" />
-        <meta property="og:description" content="Professional web development and app creation services for businesses worldwide." />
-        <link rel="canonical" href="https://buildnest.it/services" />
-      </Helmet>
-
-      <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
@@ -118,7 +108,6 @@ const Services = () => {
         </div>
       </section>
     </div>
-    </>
   );
 };
 

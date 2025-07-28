@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { Mail, Phone, Instagram, Send, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -63,16 +62,7 @@ const Contact = () => {
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Contact Us | Buildnest</title>
-        <meta name="description" content="Ready to bring your vision to life? Get in touch and let's start building something amazing together. We'll respond within 24 hours." />
-        <meta property="og:title" content="Contact Us | Buildnest" />
-        <meta property="og:description" content="Get in touch with Buildnest for your next web or app development project." />
-        <link rel="canonical" href="https://buildnest.it/contact" />
-      </Helmet>
-
-      <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
@@ -278,7 +268,6 @@ const Contact = () => {
         </div>
       </section>
     </div>
-    </>
   );
 };
 
