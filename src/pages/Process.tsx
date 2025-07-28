@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { MessageCircle, Palette, Rocket, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Helmet } from "react-helmet-async";
 
 const Process = () => {
   const steps = [
@@ -44,7 +45,13 @@ const Process = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>Process | Buildnest</title>
+        <meta name="description" content="Learn about our simple 3-step web development process: consultation, design & build, and launch. Fast delivery in 2-3 weeks with full support." />
+        <link rel="canonical" href="https://buildnest.it/process" />
+      </Helmet>
+      <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
@@ -141,7 +148,8 @@ const Process = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

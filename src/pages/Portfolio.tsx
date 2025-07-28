@@ -2,11 +2,18 @@ import { Link } from "react-router-dom";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Helmet } from "react-helmet-async";
 import clandestinoProject from "@/assets/clandestino-project.jpg";
 
 const Portfolio = () => {
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>Portfolio | Buildnest</title>
+        <meta name="description" content="View our portfolio of successful web development projects including Clandestino 13 restaurant website and other amazing digital solutions." />
+        <link rel="canonical" href="https://buildnest.it/portfolio" />
+      </Helmet>
+      <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
@@ -140,7 +147,8 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

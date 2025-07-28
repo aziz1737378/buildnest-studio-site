@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
@@ -62,7 +63,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>Contact | Buildnest</title>
+        <meta name="description" content="Contact Buildnest for your web development project. Get a free consultation and quote. Email, WhatsApp, or Instagram - we respond within 24 hours." />
+        <link rel="canonical" href="https://buildnest.it/contact" />
+      </Helmet>
+      <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
@@ -267,7 +274,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Helmet } from "react-helmet-async";
 import heroBackground from "@/assets/hero-bg.jpg";
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <>
+      <Helmet>
+        <title>Buildnest Web & App Development Agency</title>
+        <meta name="description" content="Buildnest is a premium digital studio in Italy offering fast, elegant websites and apps for real businesses, restaurants, creators, and entrepreneurs." />
+        <link rel="canonical" href="https://buildnest.it/" />
+      </Helmet>
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
@@ -126,7 +133,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
