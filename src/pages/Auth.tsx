@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -83,7 +84,14 @@ const Auth = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
+    <>
+      <Helmet>
+        <title>Admin Login | Buildnest</title>
+        <meta name="description" content="Admin authentication for Buildnest management panel." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+
+      <div className="min-h-screen flex items-center justify-center bg-background">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
@@ -127,6 +135,7 @@ const Auth = () => {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -217,7 +218,14 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Helmet>
+        <title>Admin Panel | Buildnest</title>
+        <meta name="description" content="Administrative panel for managing Buildnest contact messages and users." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="border-b bg-card">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -405,6 +413,7 @@ const Admin = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
