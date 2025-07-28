@@ -54,40 +54,57 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden p-2 rounded-lg hover:bg-muted/50 transition-all duration-300 hover:scale-110"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <div className="transition-transform duration-300">
+              {isOpen ? (
+                <X size={24} className="animate-in rotate-in-180 duration-300" />
+              ) : (
+                <Menu size={24} className="animate-in fade-in duration-300" />
+              )}
+            </div>
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={cn(
-                    "block px-3 py-2 text-base font-medium transition-colors hover:text-primary",
-                    location.pathname === item.href
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  )}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="px-3 py-2">
-                <Button variant="premium" size="sm" className="w-full" asChild>
-                  <Link to="/contact">Start Project</Link>
-                </Button>
-              </div>
+        <div 
+          className={cn(
+            "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          )}
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border animate-slide-down">
+            {navItems.map((item, index) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={cn(
+                  "block px-3 py-2 text-base font-medium transition-all duration-300 hover:text-primary hover:translate-x-2 hover:bg-muted/50 rounded-lg",
+                  location.pathname === item.href
+                    ? "text-primary bg-muted/30"
+                    : "text-muted-foreground",
+                  isOpen && "animate-fade-in"
+                )}
+                style={{ animationDelay: `${index * 50}ms` }}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <div className="px-3 py-2">
+              <Button 
+                variant="premium" 
+                size="sm" 
+                className="w-full hover:scale-105 transition-transform duration-300 animate-fade-in" 
+                style={{ animationDelay: `${navItems.length * 50}ms` }}
+                asChild
+              >
+                <Link to="/contact">Start Project</Link>
+              </Button>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
