@@ -3,6 +3,8 @@ import { MessageCircle, Palette, Rocket, ArrowRight, Check } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet-async";
+import { SEOProvider } from "@/components/SEO/SEOProvider";
+import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
 const Process = () => {
@@ -47,11 +49,14 @@ const Process = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Process | Buildnest</title>
-        <meta name="description" content="Learn about our simple 3-step web development process: consultation, design & build, and launch. Fast delivery in 2-3 weeks with full support." />
-        <link rel="canonical" href="https://buildnest.it/process" />
-      </Helmet>
+      <SEOProvider
+        title="Our Development Process - From Idea to Launch"
+        description="Learn about our proven web development process. From consultation to launch, see how we bring your digital ideas to life in 3 simple steps: Discovery, Development, and Launch."
+        keywords="web development process, project timeline, development methodology, consultation, discovery phase, development workflow, launch process"
+        type="article"
+        section="Process"
+      />
+      <BreadcrumbNavigation />
       <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">

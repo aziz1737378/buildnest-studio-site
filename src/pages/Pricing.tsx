@@ -3,6 +3,8 @@ import { Check, ArrowRight, Star, Clock, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet-async";
+import { SEOProvider } from "@/components/SEO/SEOProvider";
+import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import { useState, useEffect } from "react";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
@@ -98,11 +100,14 @@ const Pricing = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Pricing | Buildnest 80% Off Offer</title>
-        <meta name="description" content="Get 80% OFF on professional web development services! Starter websites from €60, Pro websites from €120. Limited time offer - save hundreds!" />
-        <link rel="canonical" href="https://buildnest.it/pricing" />
-      </Helmet>
+      <SEOProvider
+        title="Pricing - Affordable Web Development Packages"
+        description="Transparent pricing for web development services. Choose from our Starter (€499), Pro (€999), or Custom packages. Limited-time 30% discount available. No hidden fees."
+        keywords="web development pricing, website cost, app development price, development packages, affordable web design, starter package, pro package, custom development"
+        type="product"
+        section="Pricing"
+      />
+      <BreadcrumbNavigation />
       <div className="min-h-screen pt-20">
       {/* Limited Time Offer Banner */}
       {!offerExpired && (

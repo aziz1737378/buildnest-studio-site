@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <url>
+    <loc>https://buildnest.it/</loc>
+    <image:image>
+      <image:loc>https://buildnest.it/buildnest-logo.png</image:loc>
+      <image:title>Buildnest Logo - Premium Web Development Agency</image:title>
+      <image:caption>Professional web and app development services in Italy</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://buildnest.it/assets/hero-bg.jpg</image:loc>
+      <image:title>Web Development Services Hero Image</image:title>
+      <image:caption>Modern web development and digital solutions</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://buildnest.it/portfolio</loc>
+    <image:image>
+      <image:loc>https://buildnest.it/assets/clandestino-project.jpg</image:loc>
+      <image:title>Clandestino 13 Restaurant Website Project</image:title>
+      <image:caption>Premium restaurant website design and development showcase</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

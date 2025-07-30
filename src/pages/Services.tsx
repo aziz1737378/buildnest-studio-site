@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Helmet } from "react-helmet-async";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 import { useEffect, useState } from "react";
+import { SEOProvider } from "@/components/SEO/SEOProvider";
+import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 
 const Services = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -55,11 +57,14 @@ const Services = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Our Services | Buildnest</title>
-        <meta name="description" content="Professional web development services including websites for businesses, apps & tools, landing pages, e-commerce setups, and custom solutions." />
-        <link rel="canonical" href="https://buildnest.it/services" />
-      </Helmet>
+      <SEOProvider
+        title="Our Services - Web Development & App Creation"
+        description="Professional web development services including business websites, custom apps, landing pages, e-commerce solutions, and digital tools. Expert development team in Tricase, Italy serving worldwide clients."
+        keywords="web development services, custom app development, landing page design, e-commerce development, business websites, digital solutions, React development, mobile apps"
+        type="service"
+        section="Services"
+      />
+      <BreadcrumbNavigation />
       <div className="min-h-screen pt-20">
         {/* Header */}
         <section className="section-spacing">

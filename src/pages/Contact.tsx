@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet-async";
+import { SEOProvider } from "@/components/SEO/SEOProvider";
+import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import { supabase } from "@/integrations/supabase/client";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
@@ -65,11 +67,14 @@ const Contact = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Contact | Buildnest</title>
-        <meta name="description" content="Contact Buildnest for your web development project. Get a free consultation and quote. Email, WhatsApp, or Instagram - we respond within 24 hours." />
-        <link rel="canonical" href="https://buildnest.it/contact" />
-      </Helmet>
+      <SEOProvider
+        title="Contact Us - Start Your Web Development Project"
+        description="Ready to start your project? Contact our web development team in Tricase, Italy for a free consultation and quote. Fast response within 24 hours. WhatsApp, email, and Instagram available."
+        keywords="contact web developer, free consultation, project quote, Tricase web development, Italy web agency, WhatsApp contact, quick response, development consultation"
+        type="website"
+        section="Contact"
+      />
+      <BreadcrumbNavigation />
       <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">

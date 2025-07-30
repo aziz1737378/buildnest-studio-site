@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Code, Smartphone, Zap, Star, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
+import { SEOProvider } from "@/components/SEO/SEOProvider";
+import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import heroBackground from "@/assets/hero-bg.jpg";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 import { useEffect, useState } from "react";

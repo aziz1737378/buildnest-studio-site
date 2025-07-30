@@ -1,0 +1,6 @@
+Contact: mailto:security@buildnest.it
+Contact: https://buildnest.it/contact
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: en, it
+Canonical: https://buildnest.it/.well-known/security.txt
+Policy: https://buildnest.it/security-policy

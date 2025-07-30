@@ -3,17 +3,23 @@ import { ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet-async";
+import { SEOProvider } from "@/components/SEO/SEOProvider";
+import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import clandestinoProject from "@/assets/clandestino-project.jpg";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 
 const Portfolio = () => {
   return (
     <>
-      <Helmet>
-        <title>Portfolio | Buildnest</title>
-        <meta name="description" content="View our portfolio of successful web development projects including Clandestino 13 restaurant website and other amazing digital solutions." />
-        <link rel="canonical" href="https://buildnest.it/portfolio" />
-      </Helmet>
+      <SEOProvider
+        title="Portfolio - Our Best Web Development Projects"
+        description="Explore our portfolio of premium websites and applications. See examples of our web development work for restaurants, businesses, and startups including Clandestino 13 restaurant project."
+        keywords="web development portfolio, website examples, app development showcase, restaurant websites, business web design, Clandestino 13, digital projects"
+        type="website"
+        section="Portfolio"
+        image="https://buildnest.it/assets/clandestino-project.jpg"
+      />
+      <BreadcrumbNavigation />
       <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="section-spacing">
