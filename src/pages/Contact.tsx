@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Phone, Instagram, Send, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet-async";
 import { SEOProvider } from "@/components/SEO/SEOProvider";
 import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import { supabase } from "@/integrations/supabase/client";
-import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
+import { ScrollAnimatedDiv, StaggeredContainer } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +20,12 @@ const Contact = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,11 +82,17 @@ const Contact = () => {
       <BreadcrumbNavigation />
       <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="section-spacing">
-        <div className="max-w-6xl mx-auto container-padding text-center">
-          <div className="fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Let's build your project.</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
+      <section className="section-spacing relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute top-20 left-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-60 h-60 bg-tech-blue/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        
+        <div className="max-w-6xl mx-auto container-padding text-center relative z-10">
+          <div className={`transition-all duration-1200 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-tech-blue to-primary bg-clip-text text-transparent">
+              Let's build your project.
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
               Ready to bring your vision to life? Get in touch and let's start building 
               something amazing together. We'll respond within 24 hours.
             </p>
@@ -94,7 +105,8 @@ const Contact = () => {
         <div className="max-w-6xl mx-auto container-padding">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="hover-lift slide-in-left group" style={{ animationDelay: '0.5s' }}>
+            <ScrollAnimatedDiv animation="slide-in-left" delay={200}>
+              <Card className="hover-lift group border-2 hover:border-primary/20 transition-all duration-500">
               <CardHeader>
                 <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">Send us a message</CardTitle>
                 <CardDescription className="group-hover:text-foreground transition-colors duration-300">
@@ -169,9 +181,11 @@ const Contact = () => {
                 </form>
               </CardContent>
             </Card>
+            </ScrollAnimatedDiv>
 
             {/* Contact Information */}
-            <div className="space-y-8 slide-in-right" style={{ animationDelay: "0.7s" }}>
+            <ScrollAnimatedDiv animation="slide-in-right" delay={400}>
+              <div className="space-y-8">
               <Card className="hover-lift group">
                 <CardHeader>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">Get in Touch</CardTitle>
@@ -264,7 +278,8 @@ const Contact = () => {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+              </div>
+            </ScrollAnimatedDiv>
           </div>
 
           {/* Testimonial */}
