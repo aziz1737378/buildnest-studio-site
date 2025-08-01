@@ -5,53 +5,65 @@ interface SplashScreenProps {
 }
 
 const SplashScreen = ({ onComplete }: SplashScreenProps) => {
-  const [phase, setPhase] = useState<'enter' | 'shrink' | 'exit'>('enter');
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setPhase('shrink'), 2000);
-    const timer2 = setTimeout(() => setPhase('exit'), 3000);
-    const timer3 = setTimeout(() => onComplete(), 3300);
+    // Start the transition after a brief pause
+    const timer = setTimeout(() => {
+      setIsAnimating(true);
+      // Complete the splash after animation finishes
+      setTimeout(onComplete, 1200);
+    }, 800);
 
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-    };
+    return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (
-    <div 
-      className={`fixed inset-0 z-[9999] bg-background flex items-center justify-center transition-all duration-700 ease-in-out ${
-        phase === 'exit' ? 'opacity-0 pointer-events-none' : 'opacity-100'
-      }`}
-    >
+    <div className="fixed inset-0 z-[100] bg-background transition-opacity duration-500 ease-out">
+      {/* Logo that will animate from center to top-left */}
       <div 
-        className={`transition-all duration-1000 ease-out ${
-          phase === 'enter' 
-            ? 'w-48 h-48 opacity-100 scale-100' 
-            : phase === 'shrink' 
-            ? 'w-16 h-16 opacity-100 scale-100 fixed top-4 left-4 z-[10000]' 
-            : 'w-14 h-14 opacity-100 scale-100 fixed top-4 left-4 z-[10000]'
+        className={`absolute transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+          isAnimating 
+            ? 'top-3 left-4 w-8 h-8' 
+            : 'top-1/2 left-1/2 w-32 h-32 -translate-x-1/2 -translate-y-1/2'
         }`}
-        style={{
-          transform: phase === 'enter' 
-            ? 'translate(0, 0) scale(1)' 
-            : phase === 'shrink' 
-            ? 'translate(-50vw, -50vh) scale(0.7)' 
-            : 'translate(-50vw, -50vh) scale(0.6)'
-        }}
       >
         <img 
           src="/favicon.png" 
-          alt="Buildnest Logo" 
-          className="w-full h-full object-contain transition-all duration-1000 ease-out"
+          alt="Buildnest" 
+          className={`w-full h-full object-contain transition-all duration-1000 ${
+            isAnimating ? 'rounded-lg shadow-sm' : 'rounded-2xl'
+          }`}
         />
       </div>
-      
-      {/* Elegant background animation */}
+
+      {/* Company name that fades out */}
       <div 
-        className={`absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5 transition-opacity duration-1000 ${
-          phase === 'shrink' ? 'opacity-0' : 'opacity-100'
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-20 transition-all duration-800 delay-200 ${
+          isAnimating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
+        }`}
+      >
+        <h1 className="text-4xl font-bold text-foreground tracking-tight">Buildnest</h1>
+        <p className="text-muted-foreground text-center mt-2">Premium Web Development</p>
+      </div>
+
+      {/* Loading indicator */}
+      <div 
+        className={`absolute bottom-20 left-1/2 -translate-x-1/2 transition-all duration-500 ${
+          isAnimating ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        <div className="flex space-x-1">
+          <div className="w-2 h-2 bg-primary rounded-full animate-[pulse_1.5s_ease-in-out_infinite]"></div>
+          <div className="w-2 h-2 bg-primary rounded-full animate-[pulse_1.5s_ease-in-out_0.2s_infinite]"></div>
+          <div className="w-2 h-2 bg-primary rounded-full animate-[pulse_1.5s_ease-in-out_0.4s_infinite]"></div>
+        </div>
+      </div>
+
+      {/* Gradient overlay for smooth transition */}
+      <div 
+        className={`absolute inset-0 bg-gradient-to-b from-background/0 via-background/50 to-background transition-opacity duration-1000 ${
+          isAnimating ? 'opacity-100' : 'opacity-0'
         }`}
       />
     </div>
