@@ -34,49 +34,43 @@ export const SEOProvider = ({
     ? `${title} | Buildnest - Premium Web & App Development Agency`
     : "Buildnest - Premium Web & App Development Agency | Professional Websites & Apps";
   
-  // Enhanced description with location-specific content
+  // Enhanced description for worldwide audience
   const enhancedDescription = description || 
-    "Buildnest is Italy's premium digital agency in Tricase, creating fast, elegant websites and custom apps for businesses worldwide. Expert web development, app development, and digital solutions.";
+    "Buildnest is a premium digital agency creating fast, elegant websites and custom apps for businesses worldwide. Expert web development, app development, and digital solutions.";
 
-  // Enhanced keywords with location and service terms
+  // Enhanced keywords for global reach
   const enhancedKeywords = keywords || 
-    "Buildnest, web development Italy, app development Tricase, website design Puglia, digital agency Italy, custom web applications, mobile app development, e-commerce solutions, landing pages, SEO optimization, responsive design, React development, modern web design, Italian web agency, Tricase web developer, business websites";
+    "Buildnest, web development, app development, website design, digital agency, custom web applications, mobile app development, e-commerce solutions, landing pages, SEO optimization, responsive design, React development, modern web design, business websites, global web agency";
 
   // Generate structured data based on page type
   const generateStructuredData = () => {
     const baseOrganization = {
       "@context": "https://schema.org",
-      "@type": "WebDevelopmentCompany",
+      "@type": "Organization",
       "name": "Buildnest",
-      "alternateName": "Buildnest Web Development",
+      "alternateName": "Buildnest Web Development Agency",
       "url": "https://buildnest.it",
       "logo": "https://buildnest.it/buildnest-logo.png",
       "image": "https://buildnest.it/buildnest-logo.png",
       "description": enhancedDescription,
-      "founder": {
-        "@type": "Person",
-        "name": "Abdul Aziz Azeem",
-        "jobTitle": "Founder & Lead Developer"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Tricase",
-        "addressRegion": "Puglia",
-        "addressCountry": "IT",
-        "postalCode": "73039"
-      },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+393297438979",
         "contactType": "customer service",
         "email": "info@buildnest.it",
-        "availableLanguage": ["English", "Italian", "Arabic"]
+        "availableLanguage": ["English", "Italian", "Arabic"],
+        "areaServed": "Worldwide"
       },
       "sameAs": [
         "https://instagram.com/buildnest_development",
-        "https://github.com/buildnest"
+        "https://github.com/buildnest",
+        "https://linkedin.com/company/buildnest"
       ],
       "serviceArea": {
+        "@type": "Place",
+        "name": "Worldwide"
+      },
+      "areaServed": {
         "@type": "Place",
         "name": "Worldwide"
       },
@@ -90,7 +84,11 @@ export const SEOProvider = ({
             "itemOffered": {
               "@type": "Service",
               "name": "Website Development",
-              "description": "Custom business websites with modern design and SEO optimization"
+              "description": "Custom business websites with modern design and SEO optimization",
+              "provider": {
+                "@type": "Organization",
+                "name": "Buildnest"
+              }
             }
           },
           {
@@ -98,7 +96,11 @@ export const SEOProvider = ({
             "itemOffered": {
               "@type": "Service",
               "name": "App Development",
-              "description": "Custom web and mobile applications for businesses"
+              "description": "Custom web and mobile applications for businesses",
+              "provider": {
+                "@type": "Organization",
+                "name": "Buildnest"
+              }
             }
           },
           {
@@ -106,7 +108,11 @@ export const SEOProvider = ({
             "itemOffered": {
               "@type": "Service",
               "name": "E-commerce Solutions",
-              "description": "Online stores and e-commerce platforms"
+              "description": "Online stores and e-commerce platforms",
+              "provider": {
+                "@type": "Organization",
+                "name": "Buildnest"
+              }
             }
           }
         ]
