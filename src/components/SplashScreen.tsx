@@ -8,9 +8,9 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [phase, setPhase] = useState<'enter' | 'shrink' | 'exit'>('enter');
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setPhase('shrink'), 1500);
-    const timer2 = setTimeout(() => setPhase('exit'), 2800);
-    const timer3 = setTimeout(() => onComplete(), 3200);
+    const timer1 = setTimeout(() => setPhase('shrink'), 2000);
+    const timer2 = setTimeout(() => setPhase('exit'), 3000);
+    const timer3 = setTimeout(() => onComplete(), 3300);
 
     return () => {
       clearTimeout(timer1);
@@ -28,25 +28,23 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
       <div 
         className={`transition-all duration-1000 ease-out ${
           phase === 'enter' 
-            ? 'w-32 h-32 opacity-0 scale-50' 
+            ? 'w-48 h-48 opacity-100 scale-100' 
             : phase === 'shrink' 
-            ? 'w-20 h-20 opacity-100 scale-100 fixed top-4 left-4 z-[10000]' 
-            : 'w-16 h-16 opacity-100 scale-100 fixed top-4 left-4 z-[10000]'
+            ? 'w-16 h-16 opacity-100 scale-100 fixed top-4 left-4 z-[10000]' 
+            : 'w-14 h-14 opacity-100 scale-100 fixed top-4 left-4 z-[10000]'
         }`}
         style={{
           transform: phase === 'enter' 
-            ? 'translate(0, 0) scale(0.5)' 
+            ? 'translate(0, 0) scale(1)' 
             : phase === 'shrink' 
-            ? 'translate(-50vw, -50vh) scale(0.6)' 
-            : 'translate(-50vw, -50vh) scale(0.5)'
+            ? 'translate(-50vw, -50vh) scale(0.7)' 
+            : 'translate(-50vw, -50vh) scale(0.6)'
         }}
       >
         <img 
           src="/favicon.png" 
           alt="Buildnest Logo" 
-          className={`w-full h-full object-contain transition-all duration-1000 ease-out ${
-            phase === 'enter' ? 'animate-scale-in' : ''
-          }`}
+          className="w-full h-full object-contain transition-all duration-1000 ease-out"
         />
       </div>
       
