@@ -167,7 +167,7 @@ const Portfolio = () => {
                           <span key={tech} className="bg-muted px-3 py-1 rounded-full text-sm bounce-in hover:scale-110 transition-transform duration-300" style={{ animationDelay: `${2.8 + index * 0.1}s` }}>
                             {tech}
                           </span>
-                        ))}
+                         ))}
                       </div>
                     </div>
                   </div>
@@ -180,6 +180,72 @@ const Portfolio = () => {
                       </span>
                     </Button>
                     <Button variant="outline" asChild className="slide-in-right hover:scale-105 transition-transform duration-300" style={{ animationDelay: '3.4s' }}>
+                      <Link to="/contact">Request Similar Project</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {/* Second Upcoming Project */}
+          <div className="mb-16">
+            <Card className="overflow-hidden hover-lift slide-up transition-all duration-700" style={{ animationDelay: '0.5s' }}>
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative bg-muted overflow-hidden group">
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium bounce-in" style={{ animationDelay: '0.8s' }}>
+                      Coming Soon
+                    </span>
+                  </div>
+                  <div className="w-full h-[400px] flex items-center justify-center bg-gradient-to-br from-muted to-muted/70">
+                    <div className="text-center p-8">
+                      <div className="text-6xl mb-4 scale-in" style={{ animationDelay: '1s' }}>💱</div>
+                      <h3 className="text-2xl font-bold mb-2 text-muted-foreground slide-in-right" style={{ animationDelay: '1.2s' }}>Coming Soon</h3>
+                      <p className="text-muted-foreground/70 fade-in" style={{ animationDelay: '1.4s' }}>Preview available at launch</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-8 flex flex-col justify-center">
+                  <div className="mb-6">
+                    <div className="text-4xl mb-4 scale-in" style={{ animationDelay: '1.6s' }}>💰</div>
+                    <h3 className="text-3xl font-bold mb-2 slide-in-right" style={{ animationDelay: '1.8s' }}>Valuto</h3>
+                    <p className="text-muted-foreground mb-4 fade-in" style={{ animationDelay: '2s' }}>
+                      Real-time currency exchanger web application
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 mb-6">
+                    <div className="slide-in-left" style={{ animationDelay: '2.2s' }}>
+                      <h4 className="font-semibold mb-2">Project Scope:</h4>
+                      <ul className="space-y-1 text-muted-foreground">
+                        {["Real-time exchange rates", "Multi-currency converter", "Historical data charts", "Mobile-responsive design"].map((item, index) => (
+                          <li key={index} className="fade-in transition-all duration-300 hover:translate-x-2 hover:text-foreground" style={{ animationDelay: `${2.4 + index * 0.1}s` }}>• {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="slide-in-right" style={{ animationDelay: '2.8s' }}>
+                      <h4 className="font-semibold mb-2">Technologies:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {["React", "TypeScript", "REST APIs", "Chart.js"].map((tech, index) => (
+                          <span key={tech} className="bg-muted px-3 py-1 rounded-full text-sm bounce-in hover:scale-110 transition-transform duration-300" style={{ animationDelay: `${3 + index * 0.1}s` }}>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button variant="outline" disabled className="slide-in-left opacity-60" style={{ animationDelay: '3.4s' }}>
+                      <span className="flex items-center">
+                        Launching Soon
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </span>
+                    </Button>
+                    <Button variant="outline" asChild className="slide-in-right hover:scale-105 transition-transform duration-300" style={{ animationDelay: '3.6s' }}>
                       <Link to="/contact">Request Similar Project</Link>
                     </Button>
                   </div>
