@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Navigation from "@/components/ui/navigation";
 import Footer from "@/components/ui/footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import AirplaneTransition from "@/components/AirplaneTransition";
+import PageTransition from "@/components/PageTransition";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Services from "../pages/Services";
@@ -42,7 +42,7 @@ const AppWrapper = ({ showSplash }: AppWrapperProps) => {
   return (
     <>
       <ScrollToTop />
-      <AirplaneTransition 
+      <PageTransition 
         isTransitioning={isTransitioning} 
         onComplete={handleTransitionComplete} 
       />

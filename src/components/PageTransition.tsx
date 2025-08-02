@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
-interface AirplaneTransitionProps {
+interface TransitionProps {
   isTransitioning: boolean;
   onComplete: () => void;
 }
 
-const AirplaneTransition = ({ isTransitioning, onComplete }: AirplaneTransitionProps) => {
+const PageTransition = ({ isTransitioning, onComplete }: TransitionProps) => {
   const [animationPhase, setAnimationPhase] = useState<'entering' | 'paused' | 'exiting' | 'hidden'>('hidden');
 
   useEffect(() => {
@@ -81,10 +81,10 @@ const AirplaneTransition = ({ isTransitioning, onComplete }: AirplaneTransitionP
             style={{ transform: 'translateY(20px)' }}
           />
           
-          {/* Main airplane image */}
+          {/* Main success icon image */}
           <img
-            src="/lovable-uploads/605636b2-16a9-4efc-9a45-b3325b374996.png"
-            alt="Airplane"
+            src="/lovable-uploads/ee098e65-4861-4d62-9cef-80af4818c26f.png"
+            alt="Success Growth"
             className={`w-64 md:w-80 lg:w-96 h-auto object-contain transition-all duration-700 ${
               animationPhase === 'paused' ? 'drop-shadow-2xl' : 'drop-shadow-lg'
             }`}
@@ -132,4 +132,4 @@ const AirplaneTransition = ({ isTransitioning, onComplete }: AirplaneTransitionP
   );
 };
 
-export default AirplaneTransition;
+export default PageTransition;
