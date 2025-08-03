@@ -41,13 +41,13 @@ const PageTransition = ({ isTransitioning, onComplete }: TransitionProps) => {
   const getTransformStyle = () => {
     switch (animationPhase) {
       case 'entering':
-        return 'translate(-50%, 100vh) scale(0.8)';
+        return 'translate(-100vw, 100vh) scale(0.8) rotate(-15deg)';
       case 'paused':
-        return 'translate(-50%, -50%) scale(1)';
+        return 'translate(-50%, -50%) scale(1) rotate(0deg)';
       case 'exiting':
-        return 'translate(-50%, -100vh) scale(0.8)';
+        return 'translate(100vw, -100vh) scale(0.8) rotate(15deg)';
       default:
-        return 'translate(-50%, 100vh) scale(0.8)';
+        return 'translate(-100vw, 100vh) scale(0.8) rotate(-15deg)';
     }
   };
 
@@ -81,10 +81,10 @@ const PageTransition = ({ isTransitioning, onComplete }: TransitionProps) => {
             style={{ transform: 'translateY(20px)' }}
           />
           
-          {/* Main success icon image */}
+          {/* Main rocket image */}
           <img
-            src="/lovable-uploads/ee098e65-4861-4d62-9cef-80af4818c26f.png"
-            alt="Success Growth"
+            src="/lovable-uploads/e5065f51-9624-4bce-94ff-c9298c10edeb.png"
+            alt="Rocket Launch"
             className={`w-64 md:w-80 lg:w-96 h-auto object-contain transition-all duration-700 ${
               animationPhase === 'paused' ? 'drop-shadow-2xl' : 'drop-shadow-lg'
             }`}
@@ -106,23 +106,23 @@ const PageTransition = ({ isTransitioning, onComplete }: TransitionProps) => {
       {(animationPhase === 'entering' || animationPhase === 'exiting') && (
         <>
           <div 
-            className="absolute left-1/2 top-1/2 w-1 h-32 bg-gradient-to-t from-sky-300/40 to-transparent blur-sm transition-all duration-500"
+            className="absolute left-1/2 top-1/2 w-2 h-40 bg-gradient-to-t from-orange-400/50 to-transparent blur-sm transition-all duration-500"
             style={{
-              transform: `translate(-50%, ${animationPhase === 'entering' ? '60px' : '-120px'})`,
-              opacity: animationPhase === 'entering' ? '0.6' : '0.4'
+              transform: `translate(${animationPhase === 'entering' ? '-150px, 80px' : '150px, -80px'})`,
+              opacity: animationPhase === 'entering' ? '0.7' : '0.5'
             }}
           />
           <div 
-            className="absolute left-1/2 top-1/2 w-1 h-24 bg-gradient-to-t from-blue-300/30 to-transparent blur-md transition-all duration-700"
+            className="absolute left-1/2 top-1/2 w-1 h-32 bg-gradient-to-t from-red-400/40 to-transparent blur-md transition-all duration-700"
             style={{
-              transform: `translate(-60%, ${animationPhase === 'entering' ? '80px' : '-100px'})`,
-              opacity: animationPhase === 'entering' ? '0.4' : '0.3'
+              transform: `translate(${animationPhase === 'entering' ? '-120px, 100px' : '120px, -60px'})`,
+              opacity: animationPhase === 'entering' ? '0.5' : '0.4'
             }}
           />
           <div 
-            className="absolute left-1/2 top-1/2 w-1 h-24 bg-gradient-to-t from-blue-300/30 to-transparent blur-md transition-all duration-700"
+            className="absolute left-1/2 top-1/2 w-1 h-28 bg-gradient-to-t from-yellow-400/35 to-transparent blur-lg transition-all duration-700"
             style={{
-              transform: `translate(60%, ${animationPhase === 'entering' ? '80px' : '-100px'})`,
+              transform: `translate(${animationPhase === 'entering' ? '-80px, 120px' : '80px, -40px'})`,
               opacity: animationPhase === 'entering' ? '0.4' : '0.3'
             }}
           />
