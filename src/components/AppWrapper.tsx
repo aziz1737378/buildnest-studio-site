@@ -4,6 +4,7 @@ import Navigation from "@/components/ui/navigation";
 import Footer from "@/components/ui/footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/PageTransition";
+import PageReveal from "@/components/PageReveal";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Services from "../pages/Services";
@@ -46,20 +47,28 @@ const AppWrapper = ({ showSplash }: AppWrapperProps) => {
         isTransitioning={isTransitioning} 
         onComplete={handleTransitionComplete} 
       />
-      <div className={`flex flex-col min-h-screen transition-opacity duration-500 ${showSplash ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`flex flex-col min-h-screen transition-all duration-1000 ease-out transform ${
+        showSplash 
+          ? 'opacity-0 translate-y-8 scale-95' 
+          : 'opacity-100 translate-y-0 scale-100'
+      }`}>
         <Navigation />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/process" element={<Process />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <main className={`flex-1 transition-all duration-500 ease-out transform ${
+          isTransitioning ? 'opacity-90 scale-[0.98]' : 'opacity-100 scale-100'
+        }`}>
+          <PageReveal>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/process" element={<Process />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </PageReveal>
         </main>
         <Footer />
       </div>

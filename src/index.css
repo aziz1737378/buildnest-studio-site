@@ -3,6 +3,14 @@
 /* Smooth scrolling for entire website */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navigation */
+}
+
+/* Enhanced smooth scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Custom scrollbar */
@@ -295,6 +303,72 @@ html {
   .text-gradient {
     @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
+
+  /* Enhanced Scroll Animations */
+  .scroll-reveal {
+    @apply opacity-0 translate-y-12 transition-all duration-700 ease-out;
+  }
+  
+  .scroll-reveal.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .scroll-slide-up {
+    @apply opacity-0 translate-y-16 transition-all duration-800 ease-out;
+  }
+  
+  .scroll-slide-up.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .scroll-fade-in {
+    @apply opacity-0 transition-all duration-1000 ease-out;
+  }
+  
+  .scroll-fade-in.revealed {
+    @apply opacity-100;
+  }
+  
+  .scroll-scale {
+    @apply opacity-0 scale-95 transition-all duration-800 ease-out;
+  }
+  
+  .scroll-scale.revealed {
+    @apply opacity-100 scale-100;
+  }
+  
+  .scroll-slide-left {
+    @apply opacity-0 translate-x-16 transition-all duration-800 ease-out;
+  }
+  
+  .scroll-slide-left.revealed {
+    @apply opacity-100 translate-x-0;
+  }
+  
+  .scroll-slide-right {
+    @apply opacity-0 -translate-x-16 transition-all duration-800 ease-out;
+  }
+  
+  .scroll-slide-right.revealed {
+    @apply opacity-100 translate-x-0;
+  }
+  
+  /* Page transition effects */
+  .page-enter {
+    @apply opacity-0 translate-y-8 transition-all duration-500 ease-out;
+  }
+  
+  .page-enter-active {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .page-exit {
+    @apply opacity-100 translate-y-0 transition-all duration-300 ease-in;
+  }
+  
+  .page-exit-active {
+    @apply opacity-0 -translate-y-8;
+  }
 }
 
 @layer utilities {
@@ -304,5 +378,31 @@ html {
   
   .section-spacing {
     @apply py-20 lg:py-32;
+  }
+  
+  /* Performance optimizations */
+  .transform-gpu {
+    @apply transform-gpu;
+  }
+  
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-auto {
+    will-change: auto;
+  }
+  
+  /* Smooth animations */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-spring {
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .transition-elastic {
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 }

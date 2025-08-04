@@ -24,13 +24,15 @@ const Portfolio = () => {
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
-          <div className="fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 rotate-in">Our Work</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 slide-up" style={{ animationDelay: '0.3s' }}>
+          <ScrollAnimatedDiv animation="bounce-in" duration="duration-1000">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Work</h1>
+          </ScrollAnimatedDiv>
+          <ScrollAnimatedDiv animation="fade-in-up" delay={200} duration="duration-800">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               Take a look at some of the amazing projects we've created for businesses 
               across Italy and beyond. Each project is unique and tailored to our client's needs.
             </p>
-          </div>
+          </ScrollAnimatedDiv>
         </div>
       </section>
 
@@ -38,10 +40,13 @@ const Portfolio = () => {
       <section className="pb-20">
         <div className="max-w-6xl mx-auto container-padding">
           <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-8 text-center slide-up">Featured Project</h2>
+            <ScrollAnimatedDiv animation="scale-in" delay={300}>
+              <h2 className="text-2xl font-bold mb-8 text-center">Featured Project</h2>
+            </ScrollAnimatedDiv>
             
-            <Card className="overflow-hidden hover-lift slide-up transition-all duration-700" style={{ animationDelay: '0.5s' }}>
-              <div className="grid md:grid-cols-2 gap-0">
+            <ScrollAnimatedDiv animation="fade-in-up" delay={500} duration="duration-1000" easing="ease-out">
+              <Card className="overflow-hidden hover-lift transition-all duration-700">
+                <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative bg-gray-100 overflow-hidden group">
                   <div className="absolute top-4 left-4 z-10">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium bounce-in" style={{ animationDelay: '0.8s' }}>
@@ -116,15 +121,19 @@ const Portfolio = () => {
                     </Button>
                   </div>
                 </div>
-              </div>
-            </Card>
+                </div>
+              </Card>
+            </ScrollAnimatedDiv>
           </div>
 
           {/* Upcoming Projects */}
           <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-8 text-center slide-up">Upcoming Project</h2>
+            <ScrollAnimatedDiv animation="scale-in" delay={600}>
+              <h2 className="text-2xl font-bold mb-8 text-center">Upcoming Project</h2>
+            </ScrollAnimatedDiv>
             
-            <Card className="overflow-hidden hover-lift slide-up transition-all duration-700" style={{ animationDelay: '0.3s' }}>
+            <ScrollAnimatedDiv animation="slide-in-left" delay={800} duration="duration-1000">
+              <Card className="overflow-hidden hover-lift transition-all duration-700">
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative bg-muted overflow-hidden group">
                   <div className="absolute top-4 left-4 z-10">
@@ -185,12 +194,14 @@ const Portfolio = () => {
                   </div>
                 </div>
               </div>
-            </Card>
+              </Card>
+            </ScrollAnimatedDiv>
           </div>
 
           {/* Second Upcoming Project */}
           <div className="mb-16">
-            <Card className="overflow-hidden hover-lift slide-up transition-all duration-700" style={{ animationDelay: '0.5s' }}>
+            <ScrollAnimatedDiv animation="slide-in-right" delay={1000} duration="duration-1000">
+              <Card className="overflow-hidden hover-lift transition-all duration-700">
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative bg-muted overflow-hidden group">
                   <div className="absolute top-4 left-4 z-10">
@@ -251,12 +262,14 @@ const Portfolio = () => {
                   </div>
                 </div>
               </div>
-            </Card>
+              </Card>
+            </ScrollAnimatedDiv>
           </div>
 
           {/* More Coming Soon Projects */}
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center p-8 bg-muted/30 rounded-2xl mb-8">
+          <ScrollAnimatedDiv animation="bounce-in" delay={1200}>
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center p-8 bg-muted/30 rounded-2xl mb-8">
               <div>
                 <h3 className="text-xl font-semibold mb-2">More Projects Coming Soon</h3>
                 <p className="text-muted-foreground mb-4">
@@ -269,10 +282,12 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+          </ScrollAnimatedDiv>
 
           {/* CTA Section */}
-          <div className="text-center mt-16 p-8 bg-gradient-to-r from-primary to-tech-blue rounded-2xl text-white">
+          <ScrollAnimatedDiv animation="fade-in-up" delay={1400} duration="duration-1000">
+            <div className="text-center mt-16 p-8 bg-gradient-to-r from-primary to-tech-blue rounded-2xl text-white">
             <h3 className="text-2xl font-bold mb-4">Want to Be Our Next Success Story?</h3>
             <p className="mb-6 opacity-90 max-w-2xl mx-auto">
               Let's create something amazing for your business. Every project is unique, 
@@ -284,7 +299,8 @@ const Portfolio = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-          </div>
+            </div>
+          </ScrollAnimatedDiv>
         </div>
       </section>
       </div>

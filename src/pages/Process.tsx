@@ -61,13 +61,15 @@ const Process = () => {
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
-          <div className="fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bounce-in">Our Simple Process</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 slide-up" style={{ animationDelay: '0.3s' }}>
+          <ScrollAnimatedDiv animation="rotate-in" duration="duration-1000">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Simple Process</h1>
+          </ScrollAnimatedDiv>
+          <ScrollAnimatedDiv animation="fade-in-up" delay={300} duration="duration-800">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               We've streamlined our process to be as simple and transparent as possible. 
               From idea to launch, we'll guide you every step of the way.
             </p>
-          </div>
+          </ScrollAnimatedDiv>
         </div>
       </section>
 
@@ -76,7 +78,14 @@ const Process = () => {
         <div className="max-w-6xl mx-auto container-padding">
           <div className="space-y-16">
             {steps.map((step, index) => (
-              <div key={index} className={`${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}`} style={{ animationDelay: `${0.5 + index * 0.3}s` }}>
+              <ScrollAnimatedDiv 
+                key={index} 
+                animation={index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}
+                delay={500 + (index * 300)}
+                duration="duration-1000"
+                easing="ease-out"
+                threshold={0.2}
+              >
                 <Card className="overflow-hidden hover-lift transition-all duration-700 group">
                   <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
                     {/* Content */}
@@ -112,7 +121,7 @@ const Process = () => {
                     </div>
                   </div>
                 </Card>
-              </div>
+              </ScrollAnimatedDiv>
             ))}
           </div>
 

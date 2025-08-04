@@ -129,7 +129,7 @@ const Pricing = () => {
       {/* Header */}
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
-          <div className="fade-in">
+          <ScrollAnimatedDiv animation="elastic-in" duration="duration-1000">
             {!offerExpired && (
               <div className="mb-4">
                 <span className="bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-bold animate-bounce pulse-glow">
@@ -137,12 +137,14 @@ const Pricing = () => {
                 </span>
               </div>
             )}
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 rotate-in">Clear pricing. Real value.</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 slide-up" style={{ animationDelay: '0.3s' }}>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Clear pricing. Real value.</h1>
+          </ScrollAnimatedDiv>
+          <ScrollAnimatedDiv animation="fade-in-up" delay={300} duration="duration-800">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               Transparent pricing with no hidden fees. Choose the plan that fits your business needs, 
               or let's create a custom solution together.
             </p>
-          </div>
+          </ScrollAnimatedDiv>
         </div>
       </section>
 
@@ -151,13 +153,18 @@ const Pricing = () => {
         <div className="max-w-6xl mx-auto container-padding">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {plans.map((plan, index) => (
-              <Card 
-                key={index} 
-                className={`relative hover-lift transition-all duration-500 bounce-in group ${
-                  plan.popular ? 'border-primary shadow-strong pulse-glow' : ''
-                }`}
-                style={{ animationDelay: `${0.5 + index * 0.2}s` }}
+              <ScrollAnimatedDiv 
+                key={index}
+                animation={index === 1 ? "scale-in-lg" : "fade-in-up"}
+                delay={500 + (index * 200)}
+                duration="duration-800"
+                easing="ease-out"
               >
+                <Card 
+                  className={`relative hover-lift transition-all duration-500 group h-full ${
+                    plan.popular ? 'border-primary shadow-strong pulse-glow' : ''
+                  }`}
+                >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium flex items-center">
@@ -223,7 +230,8 @@ const Pricing = () => {
                     </Link>
                   </Button>
                 </CardContent>
-              </Card>
+                </Card>
+              </ScrollAnimatedDiv>
             ))}
           </div>
 
