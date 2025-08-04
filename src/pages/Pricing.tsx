@@ -18,12 +18,24 @@ const Pricing = () => {
   const [offerExpired, setOfferExpired] = useState(false);
 
   useEffect(() => {
-    // Set end date to 7 days from now
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 7);
-    endDate.setHours(23, 59, 59, 999);
+    // Create a fixed end date that persists across page reloads
+    const getEndDate = () => {
+      const stored = localStorage.getItem('offerEndDate');
+      if (stored) {
+        return new Date(stored);
+      } else {
+        // Set end date to 7 days from first visit
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 7);
+        endDate.setHours(23, 59, 59, 999);
+        localStorage.setItem('offerEndDate', endDate.toISOString());
+        return endDate;
+      }
+    };
 
-    const timer = setInterval(() => {
+    const endDate = getEndDate();
+
+    const updateTimer = () => {
       const now = new Date().getTime();
       const distance = endDate.getTime() - now;
 
@@ -37,8 +49,15 @@ const Pricing = () => {
       } else {
         setOfferExpired(true);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        localStorage.removeItem('offerEndDate'); // Clear expired offer
       }
-    }, 1000);
+    };
+
+    // Update immediately
+    updateTimer();
+    
+    // Then update every second
+    const timer = setInterval(updateTimer, 1000);
 
     return () => clearInterval(timer);
   }, []);

@@ -314,7 +314,7 @@ html {
   }
   
   .scroll-slide-up {
-    @apply opacity-0 translate-y-16 transition-all duration-800 ease-out;
+    @apply opacity-0 translate-y-16 transition-all duration-700 ease-out;
   }
   
   .scroll-slide-up.revealed {
@@ -322,7 +322,7 @@ html {
   }
   
   .scroll-fade-in {
-    @apply opacity-0 transition-all duration-1000 ease-out;
+    @apply opacity-0 transition-all duration-700 ease-out;
   }
   
   .scroll-fade-in.revealed {
@@ -330,7 +330,7 @@ html {
   }
   
   .scroll-scale {
-    @apply opacity-0 scale-95 transition-all duration-800 ease-out;
+    @apply opacity-0 scale-95 transition-all duration-700 ease-out;
   }
   
   .scroll-scale.revealed {
@@ -338,7 +338,7 @@ html {
   }
   
   .scroll-slide-left {
-    @apply opacity-0 translate-x-16 transition-all duration-800 ease-out;
+    @apply opacity-0 translate-x-16 transition-all duration-700 ease-out;
   }
   
   .scroll-slide-left.revealed {
@@ -346,7 +346,7 @@ html {
   }
   
   .scroll-slide-right {
-    @apply opacity-0 -translate-x-16 transition-all duration-800 ease-out;
+    @apply opacity-0 -translate-x-16 transition-all duration-700 ease-out;
   }
   
   .scroll-slide-right.revealed {
