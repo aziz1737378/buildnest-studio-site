@@ -382,7 +382,7 @@ html {
   
   /* Performance optimizations */
   .transform-gpu {
-    @apply transform-gpu;
+    transform: translateZ(0);
   }
   
   .will-change-transform {
