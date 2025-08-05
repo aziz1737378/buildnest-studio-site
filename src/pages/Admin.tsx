@@ -4,6 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
@@ -19,7 +24,24 @@ import {
   Eye,
   EyeOff,
   Save,
-  Download
+  Download,
+  BarChart3,
+  Settings,
+  Users,
+  FileText,
+  Globe,
+  Shield,
+  Activity,
+  TrendingUp,
+  Clock,
+  CheckCircle,
+  XCircle,
+  Plus,
+  Edit,
+  Trash2,
+  Search,
+  Filter,
+  MoreHorizontal
 } from "lucide-react";
 
 interface ContactMessage {
@@ -42,7 +64,8 @@ const Admin = () => {
   const [stats, setStats] = useState({
     total: 0,
     unread: 0,
-    today: 0
+    today: 0,
+    thisWeek: 0
   });
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -111,15 +134,22 @@ const Admin = () => {
       
       // Calculate stats
       const today = new Date().toDateString();
+      const thisWeek = new Date();
+      thisWeek.setDate(thisWeek.getDate() - 7);
+      
       const todayMessages = data?.filter(msg => 
         new Date(msg.created_at).toDateString() === today
       ) || [];
       const unreadMessages = data?.filter(msg => msg.status === 'new') || [];
+      const thisWeekMessages = data?.filter(msg => 
+        new Date(msg.created_at) >= thisWeek
+      ) || [];
 
       setStats({
         total: data?.length || 0,
         unread: unreadMessages.length,
-        today: todayMessages.length
+        today: todayMessages.length,
+        thisWeek: thisWeekMessages.length
       });
     } catch (error: any) {
       toast({
@@ -180,6 +210,32 @@ const Admin = () => {
     }
   };
 
+  const deleteMessage = async (messageId: string) => {
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .delete()
+        .eq('id', messageId);
+
+      if (error) throw error;
+
+      setMessages(prev => prev.filter(msg => msg.id !== messageId));
+      if (selectedMessage?.id === messageId) {
+        setSelectedMessage(null);
+      }
+
+      toast({
+        title: "Message deleted successfully",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error deleting message",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
   const exportMessages = () => {
     const csvContent = [
       ['Date', 'Name', 'Email', 'Business', 'Message', 'Status'].join(','),
@@ -209,7 +265,7 @@ const Admin = () => {
 
   if (!user || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/30">
+      <div className="min-h-screen flex items-center justify-center bg-muted/30">
         <div className="text-center animate-fade-in-up">
           <div className="animate-spin w-12 h-12 border-4 border-primary border-t-transparent rounded-full mx-auto mb-6 shadow-lg"></div>
           <p className="text-lg font-medium animate-pulse">Loading admin panel...</p>
@@ -230,223 +286,367 @@ const Admin = () => {
         <meta name="description" content="Buildnest admin dashboard for managing contact messages and website administration." />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
-      {/* Header */}
-      <div className="border-b bg-card/90 backdrop-blur-sm sticky top-0 z-10 animate-fade-in">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              Buildnest Admin
-            </h1>
-            <p className="text-muted-foreground">Manage contact messages</p>
+      
+      <div className="min-h-screen bg-muted/30">
+        {/* Fixed Header */}
+        <header className="h-16 border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-50">
+          <div className="h-full flex items-center justify-between px-4 lg:px-6">
+            {/* Left side - Company branding */}
+            <div className="flex items-center space-x-3">
+              <Building className="h-6 w-6 text-primary" />
+              <div>
+                <h1 className="text-lg font-semibold">Buildnest</h1>
+                <p className="text-xs text-muted-foreground">Admin Panel</p>
+              </div>
+            </div>
+
+            {/* Right side - User info and controls */}
+            <div className="flex items-center space-x-4">
+              <Button variant="outline" size="sm">
+                <Globe className="h-4 w-4 mr-2" />
+                EN
+              </Button>
+              <span className="text-sm text-muted-foreground">{user.email}</span>
+              <Button 
+                onClick={handleSignOut} 
+                variant="outline" 
+                size="sm"
+                className="hover:bg-destructive hover:text-destructive-foreground"
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign Out
+              </Button>
+            </div>
           </div>
-          <div className="flex items-center gap-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-            <Button 
-              onClick={exportMessages} 
-              variant="outline" 
-              size="sm"
-              className="hover-glow hover:scale-105 transition-all duration-300"
-            >
-              <Download className="w-4 h-4 mr-2 animate-bounce-subtle" />
-              Export CSV
-            </Button>
-            <Button 
-              onClick={handleSignOut} 
-              variant="outline" 
-              size="sm"
-              className="hover:bg-destructive hover:text-destructive-foreground hover:scale-105 transition-all duration-300"
-            >
-              <LogOut className="w-4 h-4 mr-2" />
-              Sign Out
-            </Button>
+        </header>
+
+        {/* Main Content */}
+        <main className="container mx-auto px-4 lg:px-6 py-8">
+          {/* Welcome Header */}
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold mb-2">Welcome back, Admin</h2>
+            <p className="text-muted-foreground">Here's what's happening with your platform today.</p>
           </div>
-        </div>
-      </div>
 
-      <div className="container mx-auto px-4 py-8">
-        {/* Stats Cards */}
-        <ScrollAnimatedDiv className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" triggerOnce>
-          <Card className="group hover-glow hover:scale-105 hover:-translate-y-2 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <MessageSquare className="w-8 h-8 text-primary mr-3 group-hover:animate-pulse-scale transition-all duration-300" />
-                <div>
-                  <p className="text-2xl font-bold animate-number-count">{stats.total}</p>
-                  <p className="text-muted-foreground">Total Messages</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="group hover-glow hover:scale-105 hover:-translate-y-2 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <Mail className="w-8 h-8 text-destructive mr-3 group-hover:animate-wiggle transition-all duration-300" />
-                <div>
-                  <p className="text-2xl font-bold animate-number-count">{stats.unread}</p>
-                  <p className="text-muted-foreground">Unread Messages</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="group hover-glow hover:scale-105 hover:-translate-y-2 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <Calendar className="w-8 h-8 text-green-500 mr-3 group-hover:animate-bounce transition-all duration-300" />
-                <div>
-                  <p className="text-2xl font-bold animate-number-count">{stats.today}</p>
-                  <p className="text-muted-foreground">Today's Messages</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </ScrollAnimatedDiv>
+          {/* Stats Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">Total Messages</CardTitle>
+                <MessageSquare className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{stats.total}</div>
+                <p className="text-xs text-muted-foreground">All time messages</p>
+              </CardContent>
+            </Card>
 
-        <ScrollAnimatedDiv className="grid grid-cols-1 lg:grid-cols-2 gap-8" triggerOnce>
-          {/* Messages List */}
-          <Card className="animate-fade-in-up hover-glow transition-all duration-300" style={{ animationDelay: '400ms' }}>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <MessageSquare className="w-5 h-5 animate-bounce-subtle" />
-                Contact Messages
-              </CardTitle>
-              <CardDescription>
-                Click on a message to view details and manage it
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4 max-h-96 overflow-y-auto custom-scrollbar">
-                {messages.map((message, index) => (
-                  <div
-                    key={message.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-all duration-300 hover:scale-[1.02] animate-fade-in-up ${
-                      selectedMessage?.id === message.id
-                        ? 'border-primary bg-primary/10 shadow-lg glow-border'
-                        : 'hover:bg-muted/50 hover:shadow-md hover:border-primary/30'
-                    }`}
-                    style={{ animationDelay: `${500 + index * 50}ms` }}
-                    onClick={() => {
-                      setSelectedMessage(message);
-                      setAdminNotes(message.admin_notes || "");
-                    }}
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <div className="flex items-center gap-2">
-                        <UserIcon className="w-4 h-4 animate-pulse-subtle" />
-                        <span className="font-medium">{message.name}</span>
-                        <Badge 
-                          variant={message.status === 'new' ? 'destructive' : 'secondary'}
-                          className={message.status === 'new' ? 'animate-pulse-scale' : ''}
-                        >
-                          {message.status}
-                        </Badge>
-                      </div>
-                      <span className="text-xs text-muted-foreground">
-                        {new Date(message.created_at).toLocaleDateString()}
-                      </span>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-1">{message.email}</p>
-                    {message.business && (
-                      <p className="text-xs text-muted-foreground mb-2 flex items-center gap-1">
-                        <Building className="w-3 h-3 animate-float" />
-                        {message.business}
-                      </p>
-                    )}
-                    <p className="text-sm line-clamp-2">{message.message}</p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">Unread Messages</CardTitle>
+                <Mail className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-destructive">{stats.unread}</div>
+                <p className="text-xs text-muted-foreground">Requires attention</p>
+              </CardContent>
+            </Card>
 
-          {/* Message Details */}
-          <Card className="animate-fade-in-up hover-glow transition-all duration-300" style={{ animationDelay: '500ms' }}>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Eye className="w-5 h-5 animate-pulse-subtle" />
-                {selectedMessage ? 'Message Details' : 'Select a Message'}
-              </CardTitle>
-              {selectedMessage && (
-                <div className="flex gap-2 animate-fade-in">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="hover:scale-105 transition-all duration-300 hover-glow"
-                    onClick={() => markAsRead(selectedMessage.id, selectedMessage.status === 'new')}
-                  >
-                    {selectedMessage.status === 'new' ? (
-                      <>
-                        <Eye className="w-4 h-4 mr-2 animate-bounce-subtle" />
-                        Mark as Read
-                      </>
-                    ) : (
-                      <>
-                        <EyeOff className="w-4 h-4 mr-2 animate-wiggle" />
-                        Mark as Unread
-                      </>
-                    )}
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">Today's Messages</CardTitle>
+                <Calendar className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{stats.today}</div>
+                <p className="text-xs text-muted-foreground">Received today</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">This Week</CardTitle>
+                <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{stats.thisWeek}</div>
+                <p className="text-xs text-muted-foreground">Last 7 days</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Management Tabs */}
+          <Tabs defaultValue="messages" className="space-y-6">
+            <TabsList className="grid w-full lg:w-auto lg:grid-cols-4">
+              <TabsTrigger value="messages" className="flex items-center space-x-2">
+                <MessageSquare className="h-4 w-4" />
+                <span>Messages</span>
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="flex items-center space-x-2">
+                <BarChart3 className="h-4 w-4" />
+                <span>Analytics</span>
+              </TabsTrigger>
+              <TabsTrigger value="users" className="flex items-center space-x-2">
+                <Users className="h-4 w-4" />
+                <span>Users</span>
+              </TabsTrigger>
+              <TabsTrigger value="settings" className="flex items-center space-x-2">
+                <Settings className="h-4 w-4" />
+                <span>Settings</span>
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Messages Tab */}
+            <TabsContent value="messages" className="space-y-6">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="text-xl font-semibold">Contact Messages</h3>
+                  <p className="text-muted-foreground">Manage incoming contact form submissions</p>
+                </div>
+                <div className="flex gap-2">
+                  <Button onClick={exportMessages} variant="outline">
+                    <Download className="h-4 w-4 mr-2" />
+                    Export CSV
                   </Button>
                 </div>
-              )}
-            </CardHeader>
-            <CardContent>
-              {selectedMessage ? (
-                <div className="space-y-4 animate-fade-in-up">
-                  <div className="animate-slide-in-left" style={{ animationDelay: '100ms' }}>
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
-                      <UserIcon className="w-4 h-4 animate-float" />
-                      Contact Information
-                    </h4>
-                    <div className="space-y-2 text-sm p-3 bg-muted/50 rounded-lg border">
-                      <p className="animate-fade-in"><strong>Name:</strong> {selectedMessage.name}</p>
-                      <p className="animate-fade-in" style={{ animationDelay: '50ms' }}><strong>Email:</strong> {selectedMessage.email}</p>
-                      {selectedMessage.business && (
-                        <p className="animate-fade-in" style={{ animationDelay: '100ms' }}><strong>Business:</strong> {selectedMessage.business}</p>
-                      )}
-                      <p className="animate-fade-in" style={{ animationDelay: '150ms' }}><strong>Date:</strong> {new Date(selectedMessage.created_at).toLocaleString()}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="animate-slide-in-right" style={{ animationDelay: '200ms' }}>
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
-                      <MessageSquare className="w-4 h-4 animate-bounce-subtle" />
-                      Message
-                    </h4>
-                    <div className="p-3 bg-muted rounded-lg border hover:shadow-md transition-all duration-300">
-                      <p className="text-sm whitespace-pre-wrap">{selectedMessage.message}</p>
-                    </div>
-                  </div>
+              </div>
 
-                  <div className="animate-slide-in-left" style={{ animationDelay: '300ms' }}>
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
-                      <Save className="w-4 h-4 animate-pulse-subtle" />
-                      Admin Notes
-                    </h4>
-                    <Textarea
-                      placeholder="Add your notes about this message..."
-                      value={adminNotes}
-                      onChange={(e) => setAdminNotes(e.target.value)}
-                      className="min-h-[100px] transition-all duration-300 focus:scale-[1.02] hover:shadow-md"
-                    />
-                    <Button 
-                      size="sm" 
-                      className="mt-2 hover:scale-105 hover-glow transition-all duration-300"
-                      onClick={saveNotes}
-                    >
-                      <Save className="w-4 h-4 mr-2 animate-bounce-subtle" />
-                      Save Notes
-                    </Button>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Messages List */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MessageSquare className="h-5 w-5" />
+                      All Messages
+                    </CardTitle>
+                    <CardDescription>
+                      Click on a message to view details
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3 max-h-96 overflow-y-auto">
+                      {messages.map((message) => (
+                        <div
+                          key={message.id}
+                          className={`p-4 border rounded-lg cursor-pointer transition-all hover:shadow-sm ${
+                            selectedMessage?.id === message.id
+                              ? 'border-primary bg-primary/5'
+                              : 'hover:border-primary/50'
+                          }`}
+                          onClick={() => {
+                            setSelectedMessage(message);
+                            setAdminNotes(message.admin_notes || "");
+                          }}
+                        >
+                          <div className="flex items-start justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <UserIcon className="h-4 w-4" />
+                              <span className="font-medium">{message.name}</span>
+                              <Badge 
+                                variant={message.status === 'new' ? 'destructive' : 'secondary'}
+                              >
+                                {message.status}
+                              </Badge>
+                            </div>
+                            <span className="text-xs text-muted-foreground">
+                              {new Date(message.created_at).toLocaleDateString()}
+                            </span>
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-1">{message.email}</p>
+                          {message.business && (
+                            <p className="text-xs text-muted-foreground mb-2 flex items-center gap-1">
+                              <Building className="h-3 w-3" />
+                              {message.business}
+                            </p>
+                          )}
+                          <p className="text-sm line-clamp-2">{message.message}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Message Details */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Eye className="h-5 w-5" />
+                      {selectedMessage ? 'Message Details' : 'Select a Message'}
+                    </CardTitle>
+                    {selectedMessage && (
+                      <div className="flex gap-2">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => markAsRead(selectedMessage.id, selectedMessage.status === 'new')}
+                        >
+                          {selectedMessage.status === 'new' ? (
+                            <>
+                              <CheckCircle className="h-4 w-4 mr-2" />
+                              Mark as Read
+                            </>
+                          ) : (
+                            <>
+                              <XCircle className="h-4 w-4 mr-2" />
+                              Mark as Unread
+                            </>
+                          )}
+                        </Button>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button size="sm" variant="outline" className="text-destructive hover:bg-destructive hover:text-destructive-foreground">
+                              <Trash2 className="h-4 w-4 mr-2" />
+                              Delete
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                This action cannot be undone. This will permanently delete the message.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction 
+                                onClick={() => deleteMessage(selectedMessage.id)}
+                                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                              >
+                                Delete
+                              </AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </div>
+                    )}
+                  </CardHeader>
+                  <CardContent>
+                    {selectedMessage ? (
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="font-medium mb-2 flex items-center gap-2">
+                            <UserIcon className="h-4 w-4" />
+                            Contact Information
+                          </h4>
+                          <div className="space-y-2 text-sm p-3 bg-muted/50 rounded-lg">
+                            <p><strong>Name:</strong> {selectedMessage.name}</p>
+                            <p><strong>Email:</strong> {selectedMessage.email}</p>
+                            {selectedMessage.business && (
+                              <p><strong>Business:</strong> {selectedMessage.business}</p>
+                            )}
+                            <p><strong>Date:</strong> {new Date(selectedMessage.created_at).toLocaleString()}</p>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-medium mb-2 flex items-center gap-2">
+                            <MessageSquare className="h-4 w-4" />
+                            Message
+                          </h4>
+                          <div className="p-3 bg-muted rounded-lg">
+                            <p className="text-sm whitespace-pre-wrap">{selectedMessage.message}</p>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="font-medium mb-2 flex items-center gap-2">
+                            <FileText className="h-4 w-4" />
+                            Admin Notes
+                          </h4>
+                          <Textarea
+                            placeholder="Add your notes about this message..."
+                            value={adminNotes}
+                            onChange={(e) => setAdminNotes(e.target.value)}
+                            className="min-h-[100px]"
+                          />
+                          <Button 
+                            size="sm" 
+                            className="mt-2"
+                            onClick={saveNotes}
+                          >
+                            <Save className="h-4 w-4 mr-2" />
+                            Save Notes
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-center text-muted-foreground py-8">
+                        <MessageSquare className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                        <p>Select a message to view details</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            {/* Analytics Tab */}
+            <TabsContent value="analytics" className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BarChart3 className="h-5 w-5" />
+                    Analytics Dashboard
+                  </CardTitle>
+                  <CardDescription>
+                    View detailed analytics and insights
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-center text-muted-foreground py-12">
+                    <Activity className="h-16 w-16 mx-auto mb-4 opacity-50" />
+                    <p className="text-lg font-medium mb-2">Analytics Coming Soon</p>
+                    <p>Detailed analytics and reporting features will be available here.</p>
                   </div>
-                </div>
-              ) : (
-                <div className="text-center text-muted-foreground py-8 animate-fade-in">
-                  <MessageSquare className="w-12 h-12 mx-auto mb-4 opacity-50 animate-float" />
-                  <p className="animate-pulse-subtle">Select a message from the list to view details</p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </ScrollAnimatedDiv>
-      </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Users Tab */}
+            <TabsContent value="users" className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Users className="h-5 w-5" />
+                    User Management
+                  </CardTitle>
+                  <CardDescription>
+                    Manage user accounts and permissions
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-center text-muted-foreground py-12">
+                    <Shield className="h-16 w-16 mx-auto mb-4 opacity-50" />
+                    <p className="text-lg font-medium mb-2">User Management Coming Soon</p>
+                    <p>User account management features will be available here.</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Settings Tab */}
+            <TabsContent value="settings" className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Settings className="h-5 w-5" />
+                    System Settings
+                  </CardTitle>
+                  <CardDescription>
+                    Configure system preferences and settings
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-center text-muted-foreground py-12">
+                    <Settings className="h-16 w-16 mx-auto mb-4 opacity-50" />
+                    <p className="text-lg font-medium mb-2">Settings Coming Soon</p>
+                    <p>System configuration options will be available here.</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </main>
       </div>
     </>
   );
