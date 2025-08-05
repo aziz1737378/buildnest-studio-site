@@ -289,43 +289,45 @@ const Admin = () => {
       
       <div className="min-h-screen bg-muted/30">
         {/* Fixed Header */}
-        <header className="h-16 border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-50">
-          <div className="h-full flex items-center justify-between px-4 lg:px-6">
+        <header className="h-14 sm:h-16 border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-50">
+          <div className="h-full flex items-center justify-between px-3 sm:px-4 lg:px-6">
             {/* Left side - Company branding */}
-            <div className="flex items-center space-x-3">
-              <Building className="h-6 w-6 text-primary" />
-              <div>
-                <h1 className="text-lg font-semibold">Buildnest</h1>
-                <p className="text-xs text-muted-foreground">Admin Panel</p>
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <Building className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+              <div className="hidden xs:block">
+                <h1 className="text-base sm:text-lg font-semibold">Buildnest</h1>
+                <p className="text-xs text-muted-foreground hidden sm:block">Admin Panel</p>
               </div>
             </div>
 
             {/* Right side - User info and controls */}
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">
+            <div className="flex items-center space-x-1 sm:space-x-2 lg:space-x-4">
+              <Button variant="outline" size="sm" className="hidden sm:flex">
                 <Globe className="h-4 w-4 mr-2" />
                 EN
               </Button>
-              <span className="text-sm text-muted-foreground">{user.email}</span>
+              <span className="text-xs sm:text-sm text-muted-foreground hidden md:block max-w-32 lg:max-w-none truncate">
+                {user.email}
+              </span>
               <Button 
                 onClick={handleSignOut} 
                 variant="outline" 
                 size="sm"
                 className="hover:bg-destructive hover:text-destructive-foreground"
               >
-                <LogOut className="h-4 w-4 mr-2" />
-                Sign Out
+                <LogOut className="h-4 w-4 sm:mr-2" />
+                <span className="hidden sm:inline">Sign Out</span>
               </Button>
             </div>
           </div>
         </header>
 
         {/* Main Content */}
-        <main className="container mx-auto px-4 lg:px-6 py-8">
+        <main className="container mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
           {/* Welcome Header */}
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold mb-2">Welcome back, Admin</h2>
-            <p className="text-muted-foreground">Here's what's happening with your platform today.</p>
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">Welcome back, Admin</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">Here's what's happening with your platform today.</p>
           </div>
 
           {/* Stats Grid */}
@@ -376,42 +378,43 @@ const Admin = () => {
           </div>
 
           {/* Management Tabs */}
-          <Tabs defaultValue="messages" className="space-y-6">
-            <TabsList className="grid w-full lg:w-auto lg:grid-cols-4">
-              <TabsTrigger value="messages" className="flex items-center space-x-2">
+          <Tabs defaultValue="messages" className="space-y-4 sm:space-y-6">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto p-1 bg-muted">
+              <TabsTrigger value="messages" className="flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-2 p-2 sm:p-3 text-xs sm:text-sm">
                 <MessageSquare className="h-4 w-4" />
-                <span>Messages</span>
+                <span className="hidden xs:inline">Messages</span>
               </TabsTrigger>
-              <TabsTrigger value="analytics" className="flex items-center space-x-2">
+              <TabsTrigger value="analytics" className="flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-2 p-2 sm:p-3 text-xs sm:text-sm">
                 <BarChart3 className="h-4 w-4" />
-                <span>Analytics</span>
+                <span className="hidden xs:inline">Analytics</span>
               </TabsTrigger>
-              <TabsTrigger value="users" className="flex items-center space-x-2">
+              <TabsTrigger value="users" className="flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-2 p-2 sm:p-3 text-xs sm:text-sm">
                 <Users className="h-4 w-4" />
-                <span>Users</span>
+                <span className="hidden xs:inline">Users</span>
               </TabsTrigger>
-              <TabsTrigger value="settings" className="flex items-center space-x-2">
+              <TabsTrigger value="settings" className="flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-2 p-2 sm:p-3 text-xs sm:text-sm">
                 <Settings className="h-4 w-4" />
-                <span>Settings</span>
+                <span className="hidden xs:inline">Settings</span>
               </TabsTrigger>
             </TabsList>
 
             {/* Messages Tab */}
-            <TabsContent value="messages" className="space-y-6">
-              <div className="flex justify-between items-center">
+            <TabsContent value="messages" className="space-y-4 sm:space-y-6">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div>
-                  <h3 className="text-xl font-semibold">Contact Messages</h3>
-                  <p className="text-muted-foreground">Manage incoming contact form submissions</p>
+                  <h3 className="text-lg sm:text-xl font-semibold">Contact Messages</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">Manage incoming contact form submissions</p>
                 </div>
                 <div className="flex gap-2">
-                  <Button onClick={exportMessages} variant="outline">
-                    <Download className="h-4 w-4 mr-2" />
-                    Export CSV
+                  <Button onClick={exportMessages} variant="outline" size="sm" className="text-xs sm:text-sm">
+                    <Download className="h-4 w-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Export CSV</span>
+                    <span className="sm:hidden">Export</span>
                   </Button>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
                 {/* Messages List */}
                 <Card>
                   <CardHeader>
@@ -474,43 +477,47 @@ const Admin = () => {
                       {selectedMessage ? 'Message Details' : 'Select a Message'}
                     </CardTitle>
                     {selectedMessage && (
-                      <div className="flex gap-2">
+                      <div className="flex flex-col sm:flex-row gap-2">
                         <Button
                           size="sm"
                           variant="outline"
                           onClick={() => markAsRead(selectedMessage.id, selectedMessage.status === 'new')}
+                          className="text-xs sm:text-sm"
                         >
                           {selectedMessage.status === 'new' ? (
                             <>
-                              <CheckCircle className="h-4 w-4 mr-2" />
-                              Mark as Read
+                              <CheckCircle className="h-4 w-4 sm:mr-2" />
+                              <span className="hidden sm:inline">Mark as Read</span>
+                              <span className="sm:hidden">Read</span>
                             </>
                           ) : (
                             <>
-                              <XCircle className="h-4 w-4 mr-2" />
-                              Mark as Unread
+                              <XCircle className="h-4 w-4 sm:mr-2" />
+                              <span className="hidden sm:inline">Mark as Unread</span>
+                              <span className="sm:hidden">Unread</span>
                             </>
                           )}
                         </Button>
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
-                            <Button size="sm" variant="outline" className="text-destructive hover:bg-destructive hover:text-destructive-foreground">
-                              <Trash2 className="h-4 w-4 mr-2" />
-                              Delete
+                            <Button size="sm" variant="outline" className="text-destructive hover:bg-destructive hover:text-destructive-foreground text-xs sm:text-sm">
+                              <Trash2 className="h-4 w-4 sm:mr-2" />
+                              <span className="hidden sm:inline">Delete</span>
+                              <span className="sm:hidden">Del</span>
                             </Button>
                           </AlertDialogTrigger>
-                          <AlertDialogContent>
+                          <AlertDialogContent className="sm:max-w-md">
                             <AlertDialogHeader>
                               <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                               <AlertDialogDescription>
                                 This action cannot be undone. This will permanently delete the message.
                               </AlertDialogDescription>
                             </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogFooter className="flex-col sm:flex-row gap-2">
+                              <AlertDialogCancel className="w-full sm:w-auto">Cancel</AlertDialogCancel>
                               <AlertDialogAction 
                                 onClick={() => deleteMessage(selectedMessage.id)}
-                                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                className="w-full sm:w-auto bg-destructive text-destructive-foreground hover:bg-destructive/90"
                               >
                                 Delete
                               </AlertDialogAction>

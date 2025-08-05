@@ -41,13 +41,13 @@ const PageTransition = ({ isTransitioning, onComplete }: TransitionProps) => {
   const getTransformStyle = () => {
     switch (animationPhase) {
       case 'entering':
-        return 'translate(-100vw, 100vh) scale(0.8) rotate(-15deg)';
+        return 'translate(-100vw, 50vh) scale(0.6) rotate(-15deg)';
       case 'paused':
-        return 'translate(-50%, -50%) scale(1) rotate(0deg)';
+        return 'translate(-50%, -50%) scale(0.8) rotate(0deg)';
       case 'exiting':
-        return 'translate(100vw, -100vh) scale(0.8) rotate(15deg)';
+        return 'translate(100vw, -50vh) scale(0.6) rotate(15deg)';
       default:
-        return 'translate(-100vw, 100vh) scale(0.8) rotate(-15deg)';
+        return 'translate(-100vw, 50vh) scale(0.6) rotate(-15deg)';
     }
   };
 
