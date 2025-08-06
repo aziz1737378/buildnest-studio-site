@@ -32,7 +32,23 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      // Send to Discord webhook first
+      const { data: discordData, error: discordError } = await supabase.functions.invoke('discord-webhook', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          business: formData.business || null,
+          message: formData.message
+        }
+      });
+
+      if (discordError) {
+        console.error('Discord webhook error:', discordError);
+        // Continue with database insert even if Discord fails
+      }
+
+      // Save to database as backup
+      const { error: dbError } = await supabase
         .from('contact_messages')
         .insert([
           {
@@ -43,8 +59,18 @@ const Contact = () => {
           }
         ]);
 
-      if (error) {
-        throw error;
+      if (dbError) {
+        console.error('Database error:', dbError);
+        // If Discord succeeded but DB failed, still show success
+        if (!discordError && discordData?.success) {
+          toast({
+            title: "Message sent successfully!",
+            description: "We'll get back to you within 24 hours.",
+          });
+          setFormData({ name: "", email: "", business: "", message: "" });
+          return;
+        }
+        throw dbError;
       }
 
       toast({
