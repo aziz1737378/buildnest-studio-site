@@ -95,7 +95,7 @@ const handler = async (req: Request): Promise<Response> => {
     const embed: DiscordEmbed = {
       title: "📩 New Contact Form Submission",
       description: "A new inquiry has been received from the website.",
-      color: 0x3B82F6, // Blue color
+      color: 0xF7D946, // Golden color matching the webhook avatar
       fields: [
         {
           name: "👤 Name",
@@ -127,7 +127,7 @@ const handler = async (req: Request): Promise<Response> => {
     const discordPayload = {
       embeds: [embed],
       username: "Buildnest Bot",
-      avatar_url: "https://cdn.discordapp.com/attachments/your-avatar-url" // Optional: replace with your bot avatar
+      avatar_url: "https://3ebdde07-fb5c-4417-8917-05014b674948.lovableproject.com/lovable-uploads/0c23b853-d3f8-4aa3-978c-1378860f1a12.png"
     };
 
     console.log("Sending to Discord webhook...");
