@@ -31,8 +31,11 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    console.log("🚀 Form submission started", { formData });
+    
     try {
       // Send to Discord webhook first
+      console.log("📨 Calling Discord webhook...");
       const { data: discordData, error: discordError } = await supabase.functions.invoke('discord-webhook', {
         body: {
           name: formData.name,
@@ -42,12 +45,17 @@ const Contact = () => {
         }
       });
 
+      console.log("📨 Discord webhook response:", { discordData, discordError });
+
       if (discordError) {
-        console.error('Discord webhook error:', discordError);
+        console.error('❌ Discord webhook error:', discordError);
         // Continue with database insert even if Discord fails
+      } else {
+        console.log("✅ Discord webhook succeeded");
       }
 
       // Save to database as backup
+      console.log("💾 Saving to database...");
       const { error: dbError } = await supabase
         .from('contact_messages')
         .insert([
@@ -59,8 +67,10 @@ const Contact = () => {
           }
         ]);
 
+      console.log("💾 Database response:", { dbError });
+
       if (dbError) {
-        console.error('Database error:', dbError);
+        console.error('❌ Database error:', dbError);
         // If Discord succeeded but DB failed, still show success
         if (!discordError && discordData?.success) {
           toast({
@@ -73,12 +83,14 @@ const Contact = () => {
         throw dbError;
       }
 
+      console.log("✅ Form submission completed successfully");
       toast({
         title: "Message sent successfully!",
         description: "We'll get back to you within 24 hours.",
       });
       setFormData({ name: "", email: "", business: "", message: "" });
     } catch (error: any) {
+      console.error("❌ Form submission error:", error);
       toast({
         title: "Error sending message",
         description: error.message || "Please try again later.",
