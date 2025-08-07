@@ -238,11 +238,11 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Email</h4>
-                      <a 
-                        href="mailto:azizxdev175@gmail.com" 
+                       <a 
+                        href="mailto:info@buildnest.it" 
                         className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:underline"
                       >
-                        azizxdev175@gmail.com
+                        info@buildnest.it
                       </a>
                     </div>
                   </div>

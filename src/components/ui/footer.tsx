@@ -72,8 +72,8 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Contact</h3>
             <div className="space-y-2 text-primary-foreground/80">
               <div>
-                <a href="mailto:azizxdev175@gmail.com" className="hover:text-primary-foreground transition-colors">
-                  azizxdev175@gmail.com
+                <a href="mailto:info@buildnest.it" className="hover:text-primary-foreground transition-colors">
+                  info@buildnest.it
                 </a>
               </div>
               <div>
