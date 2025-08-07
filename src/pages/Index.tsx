@@ -173,54 +173,69 @@ const Index = () => {
 
           <StaggeredContainer delay={200}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              <Card className="hover-lift group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-background via-background to-primary/5 backdrop-blur-sm transition-all duration-700 ease-out hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-4 hover:scale-[1.03] animate-fade-in">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out" />
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200" />
                 <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Zap className="h-8 w-8 text-primary" />
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-primary/30 rounded-2xl blur-xl scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 ease-out" />
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ease-out shadow-lg shadow-primary/10">
+                      <Zap className="h-8 w-8 text-primary group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-400 ease-out" />
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Lightning Fast</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Optimized for speed and performance, ensuring your users have the best experience possible.
+                  <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-all duration-500 ease-out">Lightning Fast</h3>
+                  <p className="text-muted-foreground mb-6 group-hover:text-foreground/90 transition-all duration-500 ease-out leading-relaxed">
+                    Websites that load in under 3 seconds and provide seamless user experience.
                   </p>
-                  <div className="w-full bg-muted rounded-full h-2 mb-2">
-                    <div className="bg-primary h-2 rounded-full animate-progress" style={{ width: '95%' }} />
+                  <div className="w-full bg-muted/50 rounded-full h-3 mb-3 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-pulse" />
+                    <div className="bg-gradient-to-r from-primary via-primary/90 to-primary/80 h-3 rounded-full transition-all duration-1000 ease-out animate-progress group-hover:shadow-lg group-hover:shadow-primary/40" style={{ width: '95%' }} />
                   </div>
-                  <span className="text-sm font-medium">Performance Score: 95%</span>
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-primary transition-all duration-500">Performance: 95%</span>
                 </CardContent>
               </Card>
 
-              <Card className="hover-lift group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-tech-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-background via-background to-tech-blue/5 backdrop-blur-sm transition-all duration-700 ease-out hover:shadow-2xl hover:shadow-tech-blue/20 hover:-translate-y-4 hover:scale-[1.03] animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-tech-blue/10 via-transparent to-tech-blue/5 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out" />
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-tech-blue/5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200" />
                 <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-tech-blue/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Code className="h-8 w-8 text-tech-blue" />
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-tech-blue/30 rounded-2xl blur-xl scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 ease-out" />
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-tech-blue/20 to-tech-blue/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ease-out shadow-lg shadow-tech-blue/10">
+                      <Code className="h-8 w-8 text-tech-blue group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-400 ease-out" />
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Premium Design</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Beautiful, modern designs that capture your brand essence and engage your audience.
+                  <h3 className="text-2xl font-bold mb-4 group-hover:text-tech-blue transition-all duration-500 ease-out">Premium Design</h3>
+                  <p className="text-muted-foreground mb-6 group-hover:text-foreground/90 transition-all duration-500 ease-out leading-relaxed">
+                    Beautiful, modern designs that make your business stand out from the competition.
                   </p>
-                  <div className="w-full bg-muted rounded-full h-2 mb-2">
-                    <div className="bg-tech-blue h-2 rounded-full animate-progress" style={{ width: '100%', animationDelay: '0.5s' }} />
+                  <div className="w-full bg-muted/50 rounded-full h-3 mb-3 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-tech-blue/20 to-transparent animate-pulse" />
+                    <div className="bg-gradient-to-r from-tech-blue via-tech-blue/90 to-tech-blue/80 h-3 rounded-full transition-all duration-1000 ease-out animate-progress group-hover:shadow-lg group-hover:shadow-tech-blue/40" style={{ width: '100%', animationDelay: '0.4s' }} />
                   </div>
-                  <span className="text-sm font-medium">Design Quality: 100%</span>
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-tech-blue transition-all duration-500">Design Quality: 100%</span>
                 </CardContent>
               </Card>
 
-              <Card className="hover-lift group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-background via-background to-accent/5 backdrop-blur-sm transition-all duration-700 ease-out hover:shadow-2xl hover:shadow-accent/20 hover:-translate-y-4 hover:scale-[1.03] animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out" />
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200" />
                 <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Smartphone className="h-8 w-8 text-accent" />
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-accent/30 rounded-2xl blur-xl scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 ease-out" />
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ease-out shadow-lg shadow-accent/10">
+                      <Smartphone className="h-8 w-8 text-accent group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-400 ease-out" />
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Mobile First</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Responsive designs that work perfectly on all devices, from mobile to desktop.
+                  <h3 className="text-2xl font-bold mb-4 group-hover:text-accent transition-all duration-500 ease-out">Mobile First</h3>
+                  <p className="text-muted-foreground mb-6 group-hover:text-foreground/90 transition-all duration-500 ease-out leading-relaxed">
+                    Fully responsive designs that work perfectly on all devices and screen sizes.
                   </p>
-                  <div className="w-full bg-muted rounded-full h-2 mb-2">
-                    <div className="bg-accent h-2 rounded-full animate-progress" style={{ width: '98%', animationDelay: '1s' }} />
+                  <div className="w-full bg-muted/50 rounded-full h-3 mb-3 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent animate-pulse" />
+                    <div className="bg-gradient-to-r from-accent via-accent/90 to-accent/80 h-3 rounded-full transition-all duration-1000 ease-out animate-progress group-hover:shadow-lg group-hover:shadow-accent/40" style={{ width: '98%', animationDelay: '0.6s' }} />
                   </div>
-                  <span className="text-sm font-medium">Mobile Optimization: 98%</span>
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-accent transition-all duration-500">Mobile Optimization: 98%</span>
                 </CardContent>
               </Card>
             </div>
