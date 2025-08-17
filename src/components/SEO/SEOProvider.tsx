@@ -55,7 +55,7 @@ export const SEOProvider = ({
       "description": enhancedDescription,
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+393297438979",
+        "telephone": "+393792649756",
         "contactType": "customer service",
         "email": "info@buildnest.it",
         "availableLanguage": ["English", "Italian", "Arabic"],
