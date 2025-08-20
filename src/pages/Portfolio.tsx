@@ -75,7 +75,7 @@ const Portfolio = () => {
                 
                 <div className="p-8 flex flex-col justify-center">
                   <div className="mb-6">
-                    <div className="text-4xl mb-4 scale-in" style={{ animationDelay: '1s' }}>🟨</div>
+                    <div className="text-4xl mb-4 scale-in" style={{ animationDelay: '1s' }}>🥙</div>
                     <h3 className="text-3xl font-bold mb-2 slide-in-right" style={{ animationDelay: '1.2s' }}>Clandestino 13</h3>
                     <p className="text-muted-foreground mb-4 fade-in" style={{ animationDelay: '1.4s' }}>
                       Modern burger & kebab restaurant in Tricase, Italy
