@@ -13,8 +13,8 @@ const Portfolio = () => {
     <>
       <SEOProvider
         title="Portfolio - Our Best Web Development Projects"
-        description="Explore our portfolio of premium websites and applications. See examples of our web development work for restaurants, businesses, and startups including Clandestino 13 restaurant project."
-        keywords="web development portfolio, website examples, app development showcase, restaurant websites, business web design, Clandestino 13, digital projects"
+        description="Explore our portfolio of premium websites and applications. See examples of our web development work for restaurants, businesses, and startups including Clandestino 13 restaurant, Lecce Quick Taxi, and more."
+        keywords="web development portfolio, website examples, app development showcase, restaurant websites, business web design, Clandestino 13, Lecce Quick Taxi, digital projects"
         type="website"
         section="Portfolio"
         image="https://buildnest.it/assets/clandestino-project.jpg"
@@ -36,9 +36,10 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Featured Project */}
+      {/* Featured Projects */}
       <section className="pb-20">
         <div className="max-w-6xl mx-auto container-padding">
+          {/* Clandestino 13 */}
           <div className="mb-16">
             <ScrollAnimatedDiv animation="scale-in" delay={300}>
               <h2 className="text-2xl font-bold mb-8 text-center">Featured Project</h2>
@@ -121,6 +122,94 @@ const Portfolio = () => {
                     </Button>
                   </div>
                 </div>
+                </div>
+              </Card>
+            </ScrollAnimatedDiv>
+          </div>
+
+          {/* Lecce Quick Taxi - New Featured Project */}
+          <div className="mb-16">
+            <ScrollAnimatedDiv animation="scale-in" delay={400}>
+              <h2 className="text-2xl font-bold mb-8 text-center">Featured Project</h2>
+            </ScrollAnimatedDiv>
+
+            <ScrollAnimatedDiv animation="fade-in-up" delay={600} duration="duration-1000" easing="ease-out">
+              <Card className="overflow-hidden hover-lift transition-all duration-700">
+                <div className="grid md:grid-cols-2 gap-0">
+                  <div className="relative bg-gray-100 overflow-hidden group">
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium bounce-in" style={{ animationDelay: '0.8s' }}>
+                        Live Preview
+                      </span>
+                    </div>
+                    <iframe
+                      src="https://leccequicktaxi.com"
+                      title="Lecce Quick Taxi Live Preview"
+                      className="w-full h-[400px] border-0 transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                    />
+                    <div className="absolute bottom-4 right-4 z-10">
+                      <a
+                        href="https://leccequicktaxi.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-black/80 text-white px-3 py-1 rounded-full text-xs hover:bg-black/90 transition-all duration-300 flex items-center hover:scale-110"
+                      >
+                        Open Full Site
+                        <ExternalLink className="ml-1 h-3 w-3 transition-transform duration-300 hover:translate-x-1" />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="p-8 flex flex-col justify-center">
+                    <div className="mb-6">
+                      <div className="text-4xl mb-4 scale-in" style={{ animationDelay: '1s' }}>🚕</div>
+                      <h3 className="text-3xl font-bold mb-2 slide-in-right" style={{ animationDelay: '1.2s' }}>Lecce Quick Taxi</h3>
+                      <p className="text-muted-foreground mb-4 fade-in" style={{ animationDelay: '1.4s' }}>
+                        Taxi service website for Lecce, Italy. Book rides quickly and easily online.
+                      </p>
+                    </div>
+
+                    <div className="space-y-4 mb-6">
+                      <div className="slide-in-left" style={{ animationDelay: '1.6s' }}>
+                        <h4 className="font-semibold mb-2">Project Scope:</h4>
+                        <ul className="space-y-1 text-muted-foreground">
+                          {["Taxi booking platform", "Online reservation system", "Mobile-first responsive design", "Service information & contact"].map((item, index) => (
+                            <li key={index} className="fade-in transition-all duration-300 hover:translate-x-2 hover:text-foreground" style={{ animationDelay: `${1.8 + index * 0.1}s` }}>• {item}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="slide-in-right" style={{ animationDelay: '2.2s' }}>
+                        <h4 className="font-semibold mb-2">Technologies Used:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {["React", "TypeScript", "Tailwind CSS", "Responsive Design"].map((tech, index) => (
+                            <span key={tech} className="bg-muted px-3 py-1 rounded-full text-sm bounce-in hover:scale-110 transition-transform duration-300" style={{ animationDelay: `${2.4 + index * 0.1}s` }}>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button variant="premium" asChild className="slide-in-left hover:scale-105 transition-transform duration-300" style={{ animationDelay: '2.8s' }}>
+                        <a
+                          href="https://leccequicktaxi.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center group"
+                        >
+                          View Live Site
+                          <ExternalLink className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </a>
+                      </Button>
+                      <Button variant="outline" asChild className="slide-in-right hover:scale-105 transition-transform duration-300" style={{ animationDelay: '3s' }}>
+                        <Link to="/contact">Request Similar Project</Link>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </Card>
             </ScrollAnimatedDiv>
