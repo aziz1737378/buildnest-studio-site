@@ -174,7 +174,7 @@ const Home = () => {
       {/* Features Preview */}
       <ScrollAnimatedDiv animation="scroll-fade-in">
         <section className="section-spacing">
-          <div className="max-w-6xl mx-auto container-padding">
+          <div className="max-w-6xl mx-auto container-padding relative">
             <ScrollAnimatedDiv animation="scroll-slide-up" className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Buildnest?</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -182,60 +182,54 @@ const Home = () => {
               </p>
             </ScrollAnimatedDiv>
 
+            {/* PROFESSIONAL FEATURES CARDS */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <ScrollAnimatedDiv 
-                animation="scroll-scale" 
-                className="group"
-                triggerOnce={true}
-              >
-                <div className="p-6 rounded-xl hover-glow hover:shadow-xl transition-all duration-500 group bg-card border hover:border-primary/20 hover:-translate-y-2">
-                  <div className="mb-4 relative">
-                    <div className="absolute inset-0 bg-primary/10 rounded-full w-16 h-16 animate-pulse-scale"></div>
-                    <Zap className="h-12 w-12 text-primary group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 relative z-10" />
+              {[
+                {
+                  icon: <Zap className="h-8 w-8 text-primary" />,
+                  title: "Lightning Fast",
+                  desc: "Websites that load in under 3 seconds and provide seamless user experience.",
+                  delay: "0s",
+                },
+                {
+                  icon: <Code className="h-8 w-8 text-primary" />,
+                  title: "Premium Design",
+                  desc: "Beautiful, modern designs that make your business stand out from the competition.",
+                  delay: "0.2s",
+                },
+                {
+                  icon: <Smartphone className="h-8 w-8 text-primary" />,
+                  title: "Mobile First",
+                  desc: "Fully responsive designs that work perfectly on all devices and screen sizes.",
+                  delay: "0.4s",
+                },
+              ].map((f, i) => (
+                <ScrollAnimatedDiv
+                  animation="scroll-scale"
+                  className="group"
+                  triggerOnce={true}
+                  key={i}
+                >
+                  <div
+                    className={`
+                      p-8 rounded-2xl bg-white border border-neutral-200 shadow-md
+                      hover:shadow-xl transition-all duration-300
+                      flex flex-col items-start h-full relative cursor-pointer
+                      hover:-translate-y-2
+                    `}
+                    style={{ animationDelay: f.delay }}
+                  >
+                    <div className="mb-5 rounded-full bg-gradient-to-br from-primary/10 to-accent/20 w-14 h-14 flex items-center justify-center shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                      {f.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">{f.title}</h3>
+                    <p className="text-base text-muted-foreground mb-9 group-hover:text-foreground transition-colors">{f.desc}</p>
+                    <div className="absolute left-7 right-7 bottom-7">
+                      <div className="h-1 rounded-full bg-gradient-to-r from-primary to-accent opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:from-accent group-hover:to-primary group-hover:shadow-[0_0_8px_2px_rgba(41,121,255,0.20)]"></div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Lightning Fast</h3>
-                  <p className="text-muted-foreground group-hover:text-foreground transition-colors">Websites that load in under 3 seconds and provide seamless user experience.</p>
-                  <div className="mt-4 w-full h-1 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full animate-morphWidth group-hover:animate-shimmer"></div>
-                  </div>
-                </div>
-              </ScrollAnimatedDiv>
-              
-              <ScrollAnimatedDiv 
-                animation="scroll-scale" 
-                className="group"
-                triggerOnce={true}
-              >
-                <div className="p-6 rounded-xl hover-glow hover:shadow-xl transition-all duration-500 group bg-card border hover:border-primary/20 hover:-translate-y-2" style={{ animationDelay: '0.2s' }}>
-                  <div className="mb-4 relative">
-                    <div className="absolute inset-0 bg-primary/10 rounded-full w-16 h-16 animate-pulse-scale" style={{ animationDelay: '0.5s' }}></div>
-                    <Code className="h-12 w-12 text-primary group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 relative z-10" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Premium Design</h3>
-                  <p className="text-muted-foreground group-hover:text-foreground transition-colors">Beautiful, modern designs that make your business stand out from the competition.</p>
-                  <div className="mt-4 w-full h-1 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full animate-morphWidth group-hover:animate-shimmer" style={{ animationDelay: '0.2s' }}></div>
-                  </div>
-                </div>
-              </ScrollAnimatedDiv>
-              
-              <ScrollAnimatedDiv 
-                animation="scroll-scale" 
-                className="group"
-                triggerOnce={true}
-              >
-                <div className="p-6 rounded-xl hover-glow hover:shadow-xl transition-all duration-500 group bg-card border hover:border-primary/20 hover:-translate-y-2" style={{ animationDelay: '0.4s' }}>
-                  <div className="mb-4 relative">
-                    <div className="absolute inset-0 bg-primary/10 rounded-full w-16 h-16 animate-pulse-scale" style={{ animationDelay: '1s' }}></div>
-                    <Smartphone className="h-12 w-12 text-primary group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 relative z-10" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Mobile First</h3>
-                  <p className="text-muted-foreground group-hover:text-foreground transition-colors">Fully responsive designs that work perfectly on all devices and screen sizes.</p>
-                  <div className="mt-4 w-full h-1 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full animate-morphWidth group-hover:animate-shimmer" style={{ animationDelay: '0.4s' }}></div>
-                  </div>
-                </div>
-              </ScrollAnimatedDiv>
+                </ScrollAnimatedDiv>
+              ))}
             </div>
 
             <ScrollAnimatedDiv animation="scroll-fade-in" className="text-center mt-12" triggerOnce={true}>
