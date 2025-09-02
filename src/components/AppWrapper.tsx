@@ -7,7 +7,6 @@ import PageTransition from "@/components/PageTransition";
 import PageReveal from "@/components/PageReveal";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
-import HomeV2 from "../pages/HomeV2";
 import Services from "../pages/Services";
 import Portfolio from "../pages/Portfolio";
 import Process from "../pages/Process";
@@ -59,7 +58,7 @@ const AppWrapper = ({ showSplash }: AppWrapperProps) => {
         }`}>
           <PageReveal>
             <Routes>
-              <Route path="/" element={<HomeV2 />} />
+              <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/process" element={<Process />} />
