@@ -54,13 +54,15 @@ const Portfolio = () => {
                       Live Preview
                     </span>
                   </div>
-                  <iframe 
-                    src="https://clandestino13.it" 
-                    title="Clandestino 13 Live Preview"
-                    className="w-full h-[400px] border-0 transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                  />
+                    <iframe 
+                      src="https://clandestino13.it" 
+                      title="Clandestino 13 Live Preview"
+                      className="w-full h-[400px] border-0 transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      onError={() => console.log('Iframe failed to load')}
+                    />
                   <div className="absolute bottom-4 right-4 z-10">
                     <a 
                       href="https://clandestino13.it" 
@@ -147,7 +149,9 @@ const Portfolio = () => {
                       title="Lecce Quick Taxi Live Preview"
                       className="w-full h-[400px] border-0 transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
-                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      onError={() => console.log('Iframe failed to load')}
                     />
                     <div className="absolute bottom-4 right-4 z-10">
                       <a
