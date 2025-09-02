@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import SplashScreen from "@/components/SplashScreen";
 import AppWrapper from "./components/AppWrapper";
+import SmoothScroll from "@/components/animations/SmoothScroll";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +22,9 @@ const App = () => {
           <Sonner />
           {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
           <BrowserRouter>
-            <AppWrapper showSplash={showSplash} />
+            <SmoothScroll>
+              <AppWrapper showSplash={showSplash} />
+            </SmoothScroll>
           </BrowserRouter>
         </TooltipProvider>
       </HelmetProvider>
