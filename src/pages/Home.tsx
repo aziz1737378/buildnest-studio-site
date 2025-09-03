@@ -7,8 +7,10 @@ import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import heroBackground from "@/assets/hero-bg.jpg";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 import { useEffect, useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
+  const { t } = useTranslation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -23,8 +25,8 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Buildnest Web & App Development Agency</title>
-        <meta name="description" content="Buildnest is a premium digital studio in Italy offering fast, elegant websites and apps for real businesses, restaurants, creators, and entrepreneurs." />
+        <title>{t('home.title')}</title>
+        <meta name="description" content={t('home.description')} />
         <link rel="canonical" href="https://buildnest.it/" />
       </Helmet>
       <div className="min-h-screen">
@@ -70,30 +72,29 @@ const Home = () => {
         <div className="relative z-10 max-w-4xl mx-auto text-center container-padding">
           <div className="fade-in-scale">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-gradient animate-pulse-glow">Buildnest</span>
+              <span className="text-gradient animate-pulse-glow">{t('home.hero.title')}</span>
             </h1>
             <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Smart websites & apps — built for real businesses.
+                {t('home.hero.subtitle')}
               </p>
             </div>
             <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Button variant="premium" size="lg" asChild className="group hover-glow btn-shine">
                   <Link to="/contact" className="flex items-center">
-                    Start Your Project
+                    {t('home.hero.startProject')}
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="hover-lift ripple">
-                  <Link to="/portfolio">View Our Work</Link>
+                  <Link to="/portfolio">{t('home.hero.viewWork')}</Link>
                 </Button>
               </div>
             </div>
             <div className="fade-in-up" style={{ animationDelay: '0.6s' }}>
               <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-                We design and build premium websites and digital tools for modern entrepreneurs, 
-                startups, and businesses.
+                {t('home.hero.description')}
               </p>
             </div>
           </div>
@@ -111,20 +112,19 @@ const Home = () => {
         <section className="section-spacing bg-muted/30">
           <div className="max-w-6xl mx-auto container-padding">
             <ScrollAnimatedDiv animation="scroll-slide-up" className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">What is Buildnest?</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">{t('home.about.title')}</h2>
               <div className="max-w-4xl mx-auto space-y-6 text-lg text-muted-foreground">
                 <p>
-                  Buildnest is a modern digital studio based in Italy. We create fast, elegant, 
-                  and effective websites and apps for local businesses, creators, and entrepreneurs.
+                  {t('home.about.description1')}
                 </p>
                 <p>
-                  We're fast. We're flexible. And we focus on the result — not the tech.
+                  {t('home.about.description2')}
                 </p>
                 <p className="text-xl font-medium text-foreground">
-                  Every project is fully customized, and built with care.
+                  {t('home.about.description3')}
                 </p>
                 <p className="text-muted-foreground">
-                  Based in Italy, serving clients worldwide with cutting-edge digital solutions.
+                  {t('home.about.description4')}
                 </p>
               </div>
             </ScrollAnimatedDiv>
@@ -138,7 +138,7 @@ const Home = () => {
               >
                 <div className="text-center p-6 rounded-xl bg-card border hover:border-accent/50 transition-all duration-300">
                   <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">50+</div>
-                  <div className="text-muted-foreground">Projects Delivered</div>
+                  <div className="text-muted-foreground">{t('home.stats.projects')}</div>
                   <Star className="w-6 h-6 text-accent mx-auto mt-2 group-hover:rotate-12 transition-transform" />
                 </div>
               </ScrollAnimatedDiv>
@@ -150,7 +150,7 @@ const Home = () => {
               >
                 <div className="text-center p-6 rounded-xl bg-card border hover:border-accent/50 transition-all duration-300" style={{ animationDelay: '0.2s' }}>
                   <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">2-3</div>
-                  <div className="text-muted-foreground">Week Delivery</div>
+                  <div className="text-muted-foreground">{t('home.stats.delivery')}</div>
                   <Zap className="w-6 h-6 text-accent mx-auto mt-2 group-hover:rotate-12 transition-transform" />
                 </div>
               </ScrollAnimatedDiv>
@@ -162,7 +162,7 @@ const Home = () => {
               >
                 <div className="text-center p-6 rounded-xl bg-card border hover:border-accent/50 transition-all duration-300" style={{ animationDelay: '0.4s' }}>
                   <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">100%</div>
-                  <div className="text-muted-foreground">Client Satisfaction</div>
+                  <div className="text-muted-foreground">{t('home.stats.satisfaction')}</div>
                   <Award className="w-6 h-6 text-accent mx-auto mt-2 group-hover:rotate-12 transition-transform" />
                 </div>
               </ScrollAnimatedDiv>
@@ -176,9 +176,9 @@ const Home = () => {
         <section className="section-spacing">
           <div className="max-w-6xl mx-auto container-padding relative">
             <ScrollAnimatedDiv animation="scroll-slide-up" className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Buildnest?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('home.features.title')}</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Why choose our development approach for your next project.
+                {t('home.features.subtitle')}
               </p>
             </ScrollAnimatedDiv>
 
@@ -187,20 +187,20 @@ const Home = () => {
               {[
                 {
                   icon: <Zap className="h-8 w-8 text-primary" />,
-                  title: "Lightning Fast",
-                  desc: "Websites that load in under 3 seconds and provide seamless user experience.",
+                  title: t('home.features.fast.title'),
+                  desc: t('home.features.fast.desc'),
                   delay: "0s",
                 },
                 {
                   icon: <Code className="h-8 w-8 text-primary" />,
-                  title: "Premium Design",
-                  desc: "Beautiful, modern designs that make your business stand out from the competition.",
+                  title: t('home.features.design.title'),
+                  desc: t('home.features.design.desc'),
                   delay: "0.2s",
                 },
                 {
                   icon: <Smartphone className="h-8 w-8 text-primary" />,
-                  title: "Mobile First",
-                  desc: "Fully responsive designs that work perfectly on all devices and screen sizes.",
+                  title: t('home.features.mobile.title'),
+                  desc: t('home.features.mobile.desc'),
                   delay: "0.4s",
                 },
               ].map((f, i) => (
@@ -235,7 +235,7 @@ const Home = () => {
             <ScrollAnimatedDiv animation="scroll-fade-in" className="text-center mt-12" triggerOnce={true}>
               <Button variant="premium" size="lg" asChild className="group hover-glow btn-shine pulse-scale">
                 <Link to="/services" className="flex items-center">
-                  Explore Our Services
+                  {t('home.features.exploreServices')}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300" />
                 </Link>
               </Button>

@@ -7,13 +7,16 @@ import { SEOProvider } from "@/components/SEO/SEOProvider";
 import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import clandestinoProject from "@/assets/clandestino-project.jpg";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
+import { useTranslation } from 'react-i18next';
 
 const Portfolio = () => {
+  const { t } = useTranslation();
+  
   return (
     <>
       <SEOProvider
-        title="Portfolio - Our Best Web Development Projects"
-        description="Explore our portfolio of premium websites and applications. See examples of our web development work for restaurants, businesses, and startups including Clandestino 13 restaurant, Lecce Quick Taxi, and more."
+        title={t('portfolio.title')}
+        description={t('portfolio.description')}
         keywords="web development portfolio, website examples, app development showcase, restaurant websites, business web design, Clandestino 13, Lecce Quick Taxi, digital projects"
         type="website"
         section="Portfolio"
@@ -25,12 +28,11 @@ const Portfolio = () => {
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto container-padding text-center">
           <ScrollAnimatedDiv animation="bounce-in" duration="duration-1000">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Work</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">{t('portfolio.ourWork')}</h1>
           </ScrollAnimatedDiv>
           <ScrollAnimatedDiv animation="fade-in-up" delay={200} duration="duration-800">
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
-              Take a look at some of the amazing projects we've created for businesses 
-              across Italy and beyond. Each project is unique and tailored to our client's needs.
+              {t('portfolio.subtitle')}
             </p>
           </ScrollAnimatedDiv>
         </div>
@@ -59,8 +61,10 @@ const Portfolio = () => {
                       title="Clandestino 13 Live Preview"
                       className="w-full h-[400px] border-0 transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
-                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-top-navigation allow-popups allow-popups-to-escape-sandbox"
                       referrerPolicy="no-referrer-when-downgrade"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      onLoad={() => console.log('Iframe loaded successfully')}
                       onError={() => console.log('Iframe failed to load')}
                     />
                   <div className="absolute bottom-4 right-4 z-10">
@@ -149,8 +153,10 @@ const Portfolio = () => {
                       title="Lecce Quick Taxi Live Preview"
                       className="w-full h-[400px] border-0 transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
-                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-top-navigation allow-popups allow-popups-to-escape-sandbox"
                       referrerPolicy="no-referrer-when-downgrade"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      onLoad={() => console.log('Iframe loaded successfully')}
                       onError={() => console.log('Iframe failed to load')}
                     />
                     <div className="absolute bottom-4 right-4 z-10">

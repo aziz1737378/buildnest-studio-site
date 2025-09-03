@@ -3,18 +3,21 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from './language-switcher';
 
 const Navigation = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Process", href: "/process" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Contact", href: "/contact" },
+    { name: t('nav.home'), href: "/" },
+    { name: t('nav.services'), href: "/services" },
+    { name: t('nav.portfolio'), href: "/portfolio" },
+    { name: t('nav.process'), href: "/process" },
+    { name: t('nav.pricing'), href: "/pricing" },
+    { name: t('nav.contact'), href: "/contact" },
   ];
 
   return (
@@ -51,6 +54,7 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
+            <LanguageSwitcher />
             <Button variant="premium" size="sm" asChild>
               <Link to="/contact">Start Project</Link>
             </Button>
