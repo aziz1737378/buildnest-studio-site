@@ -11,8 +11,10 @@ import { SEOProvider } from "@/components/SEO/SEOProvider";
 import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import { supabase } from "@/integrations/supabase/client";
 import { ScrollAnimatedDiv, StaggeredContainer } from "@/hooks/useScrollAnimation";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -111,8 +113,8 @@ const Contact = () => {
   return (
     <>
       <SEOProvider
-        title="Contact Us - Start Your Web Development Project"
-        description="Ready to start your project? Contact our web development team in Tricase, Italy for a free consultation and quote. Fast response within 24 hours. WhatsApp, email, and Instagram available."
+        title={t('contact.title')}
+        description={t('contact.description')}
         keywords="contact web developer, free consultation, project quote, Tricase web development, Italy web agency, WhatsApp contact, quick response, development consultation"
         type="website"
         section="Contact"
@@ -128,11 +130,10 @@ const Contact = () => {
         <div className="max-w-6xl mx-auto container-padding text-center relative z-10">
           <div className={`transition-all duration-1200 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-tech-blue to-primary bg-clip-text text-transparent">
-              Let's build your project.
+              {t('contact.seo.title')}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
-              Ready to bring your vision to life? Get in touch and let's start building 
-              something amazing together. We'll respond within 24 hours.
+              {t('contact.subtitle')}
             </p>
           </div>
         </div>

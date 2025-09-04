@@ -7,8 +7,10 @@ import { SEOProvider } from "@/components/SEO/SEOProvider";
 import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
 import { useState, useEffect } from "react";
 import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
+import { useTranslation } from "react-i18next";
 
 const Pricing = () => {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState({
     days: 7,
     hours: 0,
@@ -64,64 +66,39 @@ const Pricing = () => {
 
   const plans = [
     {
-      name: "Starter",
+      name: t('pricing.plans.starter.name'),
       originalPrice: "€299",
       discountedPrice: "€60",
-      description: "Perfect for small businesses and freelancers",
-      features: [
-        "1-page responsive website",
-        "Basic modern design", 
-        "Mobile optimization",
-        "Contact form integration",
-        "Basic SEO setup",
-        "1 month support"
-      ],
+      description: t('pricing.plans.starter.description'),
+      features: t('pricing.plans.starter.features', { returnObjects: true }) as string[],
       popular: false,
-      cta: "Get Started"
+      cta: t('pricing.plans.starter.cta')
     },
     {
-      name: "Pro",
+      name: t('pricing.plans.pro.name'),
       originalPrice: "€599",
       discountedPrice: "€120",
-      description: "Ideal for growing businesses",
-      features: [
-        "Multi-page website (up to 5 pages)",
-        "Custom design & animations",
-        "CMS integration",
-        "Advanced SEO optimization",
-        "Social media integration",
-        "Contact forms & integrations",
-        "3 months support",
-        "Performance optimization"
-      ],
+      description: t('pricing.plans.pro.description'),
+      features: t('pricing.plans.pro.features', { returnObjects: true }) as string[],
       popular: true,
-      cta: "Most Popular"
+      cta: t('pricing.plans.pro.cta')
     },
     {
-      name: "Custom",
+      name: t('pricing.plans.custom.name'),
       originalPrice: "Quote",
       discountedPrice: "80% OFF",
-      description: "Tailored solutions for unique needs",
-      features: [
-        "Advanced web applications",
-        "Custom functionality",
-        "Database integration",
-        "User authentication",
-        "Payment processing",
-        "API integrations",
-        "Ongoing maintenance",
-        "Priority support"
-      ],
+      description: t('pricing.plans.custom.description'),
+      features: t('pricing.plans.custom.features', { returnObjects: true }) as string[],
       popular: false,
-      cta: "Get Quote"
+      cta: t('pricing.plans.custom.cta')
     }
   ];
 
   return (
     <>
       <SEOProvider
-        title="Pricing - Affordable Web Development Packages"
-        description="Transparent pricing for web development services. Choose from our Starter (€499), Pro (€999), or Custom packages. Limited-time 30% discount available. No hidden fees."
+        title={t('pricing.title')}
+        description={t('pricing.description')}
         keywords="web development pricing, website cost, app development price, development packages, affordable web design, starter package, pro package, custom development"
         type="product"
         section="Pricing"
@@ -134,7 +111,7 @@ const Pricing = () => {
           <div className="max-w-6xl mx-auto container-padding text-center">
             <div className="flex items-center justify-center space-x-4">
               <Zap className="h-6 w-6" />
-              <span className="text-lg font-bold">🔥 LIMITED TIME: 80% OFF ALL PLANS!</span>
+              <span className="text-lg font-bold">🔥 {t('pricing.offer.title')}</span>
               <Zap className="h-6 w-6" />
             </div>
             <div className="mt-2 flex items-center justify-center space-x-2 text-sm">
@@ -156,12 +133,11 @@ const Pricing = () => {
                 </span>
               </div>
             )}
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Clear pricing. Real value.</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">{t('pricing.seo.title')}</h1>
           </ScrollAnimatedDiv>
           <ScrollAnimatedDiv animation="fade-in-up" delay={300} duration="duration-800">
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
-              Transparent pricing with no hidden fees. Choose the plan that fits your business needs, 
-              or let's create a custom solution together.
+              {t('pricing.subtitle')}
             </p>
           </ScrollAnimatedDiv>
         </div>

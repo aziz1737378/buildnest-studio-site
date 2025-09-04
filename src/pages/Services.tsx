@@ -7,8 +7,10 @@ import { ScrollAnimatedDiv } from "@/hooks/useScrollAnimation";
 import { useEffect, useState } from "react";
 import { SEOProvider } from "@/components/SEO/SEOProvider";
 import { BreadcrumbNavigation } from "@/components/SEO/BreadcrumbNavigation";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -20,37 +22,37 @@ const Services = () => {
   const services = [
     {
       icon: Monitor,
-      title: "Websites for businesses",
-      description: "Full site builds for restaurants, shops, services, freelancers",
-      features: ["Custom Design", "Mobile Responsive", "SEO Optimized", "Fast Loading"],
+      title: t('services.services.websites.title'),
+      description: t('services.services.websites.description'),
+      features: t('services.services.websites.features', { returnObjects: true }) as string[],
       color: "bg-primary"
     },
     {
       icon: Smartphone,
-      title: "Apps & tools",
-      description: "Internal tools, booking systems, mobile-style UIs",
-      features: ["Custom Development", "User-Friendly", "Secure", "Scalable"],
+      title: t('services.services.apps.title'),
+      description: t('services.services.apps.description'),
+      features: t('services.services.apps.features', { returnObjects: true }) as string[],
       color: "bg-tech-blue"
     },
     {
       icon: Target,
-      title: "Landing pages",
-      description: "High-converting pages for launches or products",
-      features: ["Conversion Focused", "A/B Testing", "Analytics", "Performance"],
+      title: t('services.services.landing.title'),
+      description: t('services.services.landing.description'),
+      features: t('services.services.landing.features', { returnObjects: true }) as string[],
       color: "bg-accent"
     },
     {
       icon: ShoppingCart,
-      title: "E-commerce setups",
-      description: "Online menus, orders, or stores",
-      features: ["Payment Integration", "Inventory Management", "Order Tracking", "Mobile Commerce"],
+      title: t('services.services.ecommerce.title'),
+      description: t('services.services.ecommerce.description'),
+      features: t('services.services.ecommerce.features', { returnObjects: true }) as string[],
       color: "bg-primary"
     },
     {
       icon: Wrench,
-      title: "Custom solutions",
-      description: "If you have an idea, we'll build it with you",
-      features: ["Tailored Approach", "Consultation", "Support", "Maintenance"],
+      title: t('services.services.custom.title'),
+      description: t('services.services.custom.description'),
+      features: t('services.services.custom.features', { returnObjects: true }) as string[],
       color: "bg-tech-blue"
     }
   ];
@@ -58,8 +60,8 @@ const Services = () => {
   return (
     <>
       <SEOProvider
-        title="Our Services - Web Development & App Creation"
-        description="Professional web development services including business websites, custom apps, landing pages, e-commerce solutions, and digital tools. Expert development team in Tricase, Italy serving worldwide clients."
+        title={t('services.title')}
+        description={t('services.description')}
         keywords="web development services, custom app development, landing page design, e-commerce development, business websites, digital solutions, React development, mobile apps"
         type="service"
         section="Services"
@@ -79,15 +81,14 @@ const Services = () => {
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
               }`} style={{ transitionDelay: '200ms' }}>
-                What We Build
+                {t('services.seo.title')}
               </h1>
               <p className={`text-xl text-muted-foreground max-w-3xl mx-auto mb-12 transition-all duration-700 ease-out transform ${
                 isLoaded 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
               }`} style={{ transitionDelay: '400ms' }}>
-                From simple websites to complex applications, we create digital solutions 
-                that help your business grow and succeed in the modern world.
+                {t('services.seo.subtitle')}
               </p>
             </div>
           </div>
@@ -151,27 +152,26 @@ const Services = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <ScrollAnimatedDiv animation="scroll-fade-in" className="mb-4">
-                      <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Ready to Start Your Project?</h3>
+                    <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{t('services.cta.title')}</h3>
                       <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
                     </ScrollAnimatedDiv>
                     <ScrollAnimatedDiv animation="scroll-slide-up" className="mb-6">
                       <p className="text-muted-foreground max-w-2xl mx-auto transition-colors duration-300 hover:text-foreground">
-                        Let's discuss your idea and create something amazing together. 
-                        Get a free consultation and project estimate.
+                        {t('services.cta.description')}
                       </p>
                     </ScrollAnimatedDiv>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <ScrollAnimatedDiv animation="scroll-slide-left">
                         <Button variant="premium" size="lg" asChild className="hover:scale-105 transition-all duration-300 group shadow-lg hover:shadow-xl btn-shine">
                           <Link to="/contact" className="flex items-center">
-                            Start Your Project
+                            {t('services.cta.startProject')}
                             <ArrowRight className="ml-2 h-5 w-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" />
                           </Link>
                         </Button>
                       </ScrollAnimatedDiv>
                       <ScrollAnimatedDiv animation="scroll-slide-right">
                         <Button variant="outline" size="lg" asChild className="hover:scale-105 transition-all duration-300 border-2 hover:border-primary/50 hover:bg-primary/5 hover-glow">
-                          <Link to="/pricing">View Pricing</Link>
+                          <Link to="/pricing">{t('services.cta.viewPricing')}</Link>
                         </Button>
                       </ScrollAnimatedDiv>
                     </div>
